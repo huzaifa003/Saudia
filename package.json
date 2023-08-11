@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev" : "nodemon run app.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -15,6 +16,8 @@
     "express-fileupload": "^1.4.0",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.3",
     "morgan": "~1.9.1",
     "nodemon": "^3.0.1",
     "qrcode": "^1.5.3"

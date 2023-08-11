@@ -4,9 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var upload = require('express-fileupload')
+var mongoose = require('mongoose')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 
 var app = express();
 
@@ -42,8 +44,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(4200,()=>{
-  console.log("App Started at Port 4200")
+mongoose.connect('mongodb+srv://arsalan:123@cluster0.1pceytg.mongodb.net/aetco?retryWrites=true&w=majority')
+.then(()=>{
+  console.log("connected to MongoDB");
+  app.listen(4200,()=>{
+    console.log("Server Running at 4200");
+  })
 })
+
 
 module.exports = app;
