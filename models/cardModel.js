@@ -26,3 +26,6 @@ const cardSchema = mongoose.Schema({
     authorized_by : String,
     welding_inspector: String
 })
+
+const Card = mongoose.model("Card",cardSchema);
+module.exports = Card
