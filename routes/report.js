@@ -33,6 +33,34 @@ router.post("/insert",async(req,res)=>{
     }
 })
 
+router.post("/update", async(req,res)=>{
+    let body = req.body;
+    let record = await Report.findOne({"doc_id": body.doc_id});
+    console.log(body);
+    if (record){
+        // record = body;
+        // console.log(record);
+        // const newRecord = new Report(record)
+        // await newRecord.save()
+        
+        const de = await Report.findByIdAndDelete(record._id);
+        console.log(de);
+        // body._id = record._id;
+
+        // const newRecord = await new Report(body);
+        // newRecord.save();
+        // res.status(200).json({"status": "Updated Successfully", "updated": record});
+
+        const report = await Report.create(req.body);
+        res.status(200).json({"status": "Updated Successfully", "updated": report});
+    }
+
+    else{
+        const report = await Report.create(req.body);
+        res.status(200).json(report);
+    }
+})
+
 
 router.get("/get/:doc_id",async(req,res)=>{
     let doc_id = req.params.doc_id;
