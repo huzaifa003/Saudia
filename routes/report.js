@@ -6,7 +6,7 @@ const Report = require('../models/reportModel');
 var router = express.Router();
 
 router.get("/",(req,res)=>{
-    res.send("Hello Report");
+    res.render('InsertReport',{id})
 })
 
 router.post("/insert",async(req,res)=>{
@@ -22,7 +22,7 @@ router.post("/insert",async(req,res)=>{
 
     console.log(no);
     body['serial_no'] = no;
-    body['welder_id'] = "w-" + String(no);
+    // body['welder_id'] = "w-" + String(no);
     body['doc_id'] = "r-" + String(no);
         try {
         const report = await Report.create(req.body);
@@ -31,6 +31,10 @@ router.post("/insert",async(req,res)=>{
         console.log(error);
         res.status(500).json({"message" : error.message});
     }
+})
+
+router.post('/addRows',async(req,res)=>{
+
 })
 
 router.post("/update", async(req,res)=>{
@@ -64,15 +68,17 @@ router.post("/update", async(req,res)=>{
 
 router.get("/get/:doc_id",async(req,res)=>{
     let doc_id = req.params.doc_id;
-
-    const record = await Report.findOne({"doc_id": doc_id});
+    console.log(doc_id);
+ 
+    const record = await Report.find({ doc_id: { $all: doc_id } })
     console.log(record);
     if (record){
-        res.status(200).render("report",{record});
+        res.status(200).render("ViewReport",{record:record});
         return;
     }
 
     res.status(404).json({"error": "Not found"});
     
 })
+
 module.exports = router;

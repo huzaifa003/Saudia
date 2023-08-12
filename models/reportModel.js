@@ -33,7 +33,8 @@ const reportModel = mongoose.Schema({
     post_weld: String,
     contractor_details: String,
     witness_inspector: String,
-    qc_supervisor: String
+    qc_supervisor: String,
+    project_details:String
 })
 
 const Report = mongoose.model("Report",reportModel);
