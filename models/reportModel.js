@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const reportModel = mongoose.Schema({
     serial_no: Number,
+    doc_id: String,
     welder_id: String,
     iqama_no: String,
     test_coupon_id: String,
@@ -35,5 +36,5 @@ const reportModel = mongoose.Schema({
     qc_supervisor: String
 })
 
-const Report = mongoose.Model("Report",reportModel);
+const Report = mongoose.model("Report",reportModel);
 module.exports = Report;

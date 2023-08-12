@@ -8,6 +8,7 @@ var mongoose = require('mongoose')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var reportRouter = require('./routes/report')
 
 
 var app = express();
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/report',reportRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -51,6 +52,7 @@ mongoose.connect('mongodb+srv://arsalan:123@cluster0.1pceytg.mongodb.net/aetco?r
     console.log("Server Running at 4200");
   })
 })
+
 
 
 module.exports = app;
