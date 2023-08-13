@@ -6,7 +6,7 @@ const Report = require('../models/reportModel');
 var router = express.Router();
 
 router.get("/",(req,res)=>{
-    res.render('InsertReport',{id})
+    res.render('InsertReport')
 })
 
 router.post("/insert",async(req,res)=>{
@@ -37,6 +37,18 @@ router.post('/addRows',async(req,res)=>{
 
 })
 
+router.get("/edit/:doc_id", async(req,res)=>{
+    let doc_id = req.params.doc_id;
+    let record = await Report.findOne({"doc_id": doc_id});
+    
+    if (record){
+        res.status(200).render("EditReport",{record:record});
+        return;
+    }
+
+    res.status(404).json({"error": "Not found"});
+
+})
 router.post("/update", async(req,res)=>{
     let body = req.body;
     let record = await Report.findOne({"doc_id": body.doc_id});
