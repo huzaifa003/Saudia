@@ -3,8 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send("Hi From Index")
+  res.render("insertCertificate")
 });
+// router.post('/auth',(req,res)=>{
+//   const { id,password,user_role }=req.body
+//   console.log(user_role);
+// })
+
 
 module.exports = router;
   
