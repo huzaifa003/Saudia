@@ -11,18 +11,18 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <img style="width: 150px;" src="../stylesheets/smallLogo.png" alt="">
+                <img style="width: 150px;" src="/images/smallLogo.png" alt="">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <button class="btn btn-outline-success me-2" type="button">Inspection Report</button>
+                            <form action="/report"><button class="btn btn-outline-success me-2" type="submit">Inspection Report</button> </form>
                         </li>
                        
                         <li class="nav-item">
-                            <button  class="btn btn-outline-danger me-2" type="button"> <a href="#"></a> Logout</button>
+                            <form action="/"><button  class="btn btn-outline-danger me-2" type="submit"> Logout</button></form>
                         </li>
                     </ul>
                 </div>
@@ -43,6 +43,7 @@
                     <table class="table table-bordered table-striped" id="reportTable">
                         <thead class="table-dark">
                             <tr>
+                                <td> Serial No</td>
                                 <th>Date</th>
                                 <th>Wielder ID</th>
                                 <th>Project</th>
@@ -50,12 +51,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <% records.map((data)=>{%>
-                            <td><%= data.date_of_inspection%></td>
-                            <td><%= data.welder_id%></td>
-                            <td><%= data.project_details%></td>
-                            <td> <button>Edit</button> <button>View</button>  </td>
-                          <% }) %> 
+                            <% reportData.forEach(function(report, index){ %>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td><%= report.date_of_inspection %></td>
+                                    <td><%= report.welder_id %></td>
+                                    <td><%= report.project_details %></td>
+                                    <td style="display: flex; align-items: stretch;">
+                                        <form action="/report/edit/<%= report.doc_id %>" method="POST">
+                                        <input id="" type="submit" value="Edit"></input> 
+                                        </form>
+
+                                        <form action="/report/view/<%= report.doc_id %>" method="POST">
+                                        <input type="submit" value="View"></input>
+                                        </form>
+                                    </td>
+
+                                </tr>
+                            <% }) %>
                         </tbody>
                     </table>
                 </div>

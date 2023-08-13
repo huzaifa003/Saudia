@@ -34,10 +34,10 @@ router.get('/supervisor', async (req, res) => {
   res.render('Supervisor',{"cardData" : cardData, "reportData": reportData, "certificateData": certificateData})
 })
 
-router.post('/auth', function (req, res) {
+router.post('/auth', async function (req, res) {
   console.log(req.body.id);
   if (req.body.user_role === 'supervisor') {
-    const user = User.findOne({ 'userId': req.body.id, 'password': req.body.password });
+    const user = await User.findOne({ 'userId': req.body.id, 'password': req.body.password });
     console.log(user);
     if (user) {
       console.log('User Found ');
@@ -51,7 +51,8 @@ router.post('/auth', function (req, res) {
     console.log(user);
     if (user) {
       console.log('User Found ');
-      res.render('inspector', { 'records': [getAllReports()] })
+      const reportData = await Report.find().exec()
+      res.render('inspector', {"reportData": reportData });
     } else {
       console.log('Not Found ');
     }
