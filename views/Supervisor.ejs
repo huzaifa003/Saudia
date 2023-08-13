@@ -17,13 +17,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <button class="btn btn-outline-success me-2" type="button">Certificate</button>
+                            <form action="/certificate/" method="GET"><button class="btn btn-outline-success me-2" type="submit">Certificate</button></form>
                         </li>
                         <li class="nav-item">
-                            <button class="btn btn-outline-success me-2" type="button">Welders</button>
+                            <form action="/card/" method="GET"> <button class="btn btn-outline-success me-2" type="submit">Welders</button></form>
                         </li>
                         <li class="nav-item">
-                            <button class="btn btn-outline-danger me-2" type="button">Logout</button>
+                            <form action="/"><button class="btn btn-outline-danger me-2" type="submit">Logout</button></form>
                         </li>
                     </ul>
                 </div>
@@ -92,6 +92,7 @@
                     <table class="table table-bordered table-striped" id="reportTable">
                         <thead class="table-dark">
                             <tr>
+                                <th>Serial No</th>
                                 <th>Date</th>
                                 <th>Wielder ID</th>
                                 <th>Wielder Name</th>
@@ -100,7 +101,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Report data will be added here using JavaScript -->
+                            <% reportData.forEach(function(report, index){ %>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td><%= report.date_of_inspection %></td>
+                                    <td><%= report.welder_id %></td>
+                                    <td><%= report.welder_name %></td>
+                                    <td><%= report.project_details %></td>
+                                    <td style="display: flex; align-items: stretch;">
+                                        <form action="/report/edit/<%= report.doc_id %>" method="POST">
+                                        <input id="" type="submit" value="Edit"></input> 
+                                        </form>
+
+                                        <form action="/report/view/<%= report.doc_id %>" method="POST">
+                                        <input type="submit" value="View"></input>
+                                        </form>
+                                    </td>
+
+                                </tr>
+                            <% }) %>
                         </tbody>
                     </table>
                 </div>
@@ -120,6 +139,7 @@
                     <table class="table table-bordered table-striped" id="welderTable">
                         <thead class="table-dark">
                             <tr>
+                                <th>index No</th>
                                 <th>Issued In</th>
                                 <th>Welder ID</th>
                                 <th>Welder Name</th>
@@ -127,7 +147,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Welder data will be added here using JavaScript -->
+                            <% cardData.forEach(function(card, index){ %>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td><%= card.date_of_test %></td>
+                                    <td><%= card.welder_id %></td>
+                                    <td><%= card.welder_name %></td>
+                                    <td style="display: flex; align-items: stretch;">
+                                        <form action="/card/edit/<%= card.card_no %>" method="GET">
+                                        <input id="" type="submit" value="Edit"></input> 
+                                        </form>
+
+                                        <form action="/card/view/<%= card.card_no %>">
+                                        <input type="submit" value="View"></input>
+                                        </form>
+                                    </td>
+
+                                </tr>
+                            <% }) %>
                         </tbody>
                     </table>
                 </div>
@@ -182,19 +219,19 @@
         // JavaScript code for search functionality
         const reportSearchInput = document.getElementById('reportSearch');
         const reportTable = document.querySelector('#reportTable tbody');
-        const reportData = [
-            { Date: '12-2-2001', WielderId: 'W001', WielderName: 'WielderA', Project: 'Project A' },
-            { Date: '12-2-2001', WielderId: 'W002', WielderName: 'WielderB', Project: 'Project B' },
-            { Date: '12-2-2001', WielderId: 'W003', WielderName: 'WielderC', Project: 'Project C' },
-            { Date: '12-2-2001', WielderId: 'W004', WielderName: 'WielderD', Project: 'Project D' },
-            { Date: '12-2-2001', WielderId: 'W005', WielderName: 'WielderE', Project: 'Project E' }
-        ];
+        const reports = reportData; // [
+        //     { Date: '12-2-2001', WielderId: 'W001', WielderName: 'WielderA', Project: 'Project A' },
+        //     { Date: '12-2-2001', WielderId: 'W002', WielderName: 'WielderB', Project: 'Project B' },
+        //     { Date: '12-2-2001', WielderId: 'W003', WielderName: 'WielderC', Project: 'Project C' },
+        //     { Date: '12-2-2001', WielderId: 'W004', WielderName: 'WielderD', Project: 'Project D' },
+        //     { Date: '12-2-2001', WielderId: 'W005', WielderName: 'WielderE', Project: 'Project E' }
+        // ];
 
         reportSearchInput.addEventListener('input', function() {
             const searchText = reportSearchInput.value.toLowerCase();
             reportTable.innerHTML = '';
 
-            reportData.forEach(report => {
+            reports.forEach(report => {
                 if (Object.values(report).some(data => data.toLowerCase().includes(searchText))) {
                     const row = document.createElement('tr');
                     Object.values(report).forEach(data => {

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <!-- <link rel="stylesheet" href="style.css" /> -->
   <title>Document</title>
 </head>
 
@@ -13,7 +13,7 @@
   <form action="/card/insert" method="post" enctype="multipart/form-data">
   <div class="card">
     <div class="flex-between">
-      <img style="width: 150px; height: 100px;" class="logo" src="logo.png" alt="logo" />
+      <img  style="width: 150px; height: 100px;" class="logo" src="logo.png" alt="logo" />
       <div style="text-align: center; color: #14ab55">
         <p style="text-transform: uppercase">
           Ateco Arabian Testing Evolution
@@ -23,18 +23,17 @@
         </p>
         <p style="text-transform: uppercase">Welder Qualification Card</p>
       </div>
-      <img style="width: 100px; height: 100px;" class="qrcode" src="qr.jpg" alt="QR Code" />
+      <!-- <img style="width: 100px; height: 100px;" class="qrcode" src="qr.jpg" alt="QR Code" /> -->
     </div>
     <div>
       <label style=" cursor: pointer; background-color: rgb(4, 111, 0); color: white; padding: 5px;" for="files"
         class="btn">Select Image</label>
-      <input id="files" style="visibility:hidden;" name="card" type="file">
+      <input id="files" style="visibility:hidden;" name="card" type="file" onchange="previewImage(event)">
 
     </div>
     <br>
     <div class="flex">
-      <img style="width: 200px; height: 200px;" class="person-img"
-        src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg" alt="Person" />
+      <img id="preview-selected-image" style="width: 200px; height: 200px;" class="person-img"/>
       <table id="table-1">
         <tbody>
           <tr>
@@ -206,6 +205,44 @@
       /* Apply your styling for even rows */
     }
   </style>
+
 </body>
+
+<script>
+  /**
+ * Create an arrow function that will be called when an image is selected.
+ */
+const previewImage = (event) => {
+    /**
+     * Get the selected files.
+     */
+    const imageFiles = event.target.files;
+    /**
+     * Count the number of files selected.
+     */
+    const imageFilesLength = imageFiles.length;
+    /**
+     * If at least one image is selected, then proceed to display the preview.
+     */
+    if (imageFilesLength > 0) {
+        /**
+         * Get the image path.
+         */
+        const imageSrc = URL.createObjectURL(imageFiles[0]);
+        /**
+         * Select the image preview element.
+         */
+        const imagePreviewElement = document.querySelector("#preview-selected-image");
+        /**
+         * Assign the path to the image preview element.
+         */
+        imagePreviewElement.src = imageSrc;
+        /**
+         * Show the element by changing the display value to "block".
+         */
+        imagePreviewElement.style.display = "block";
+    }
+};
+</script>
 
 </html>

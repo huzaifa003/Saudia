@@ -75,8 +75,9 @@ router.post('/addRows/:id',async(req,res)=>{
     }
 })
 
-router.get("/edit/:doc_id", async(req,res)=>{
+router.post("/edit/:doc_id", async(req,res)=>{
     let doc_id = req.params.doc_id;
+    console.log(doc_id);
     let record = await Report.findOne({"doc_id": doc_id});
     
     if (record){
@@ -116,7 +117,7 @@ router.post("/update", async(req,res)=>{
 })
 
 
-router.get("/get/:doc_id",async(req,res)=>{
+router.post("/view/:doc_id",async(req,res)=>{
     let doc_id = req.params.doc_id;
     console.log(doc_id);
  

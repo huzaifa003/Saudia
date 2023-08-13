@@ -20,7 +20,7 @@
         <div style="border: 2px black solid" class="flex-between">
           <div class="logo"></div>
           <p style="text-align: center">
-            Welder Qualification Test Record Sheet | DOC NO # :<span><%= record[0].doc_id %></span>
+            Welder Qualification Test Record Sheet | DOC NO # :<span><%= record.doc_id %></span>
           </p>
           <img class = "logo" src="https://i.ibb.co/jgGwH67/logo.png">
         </div>
@@ -110,10 +110,10 @@
               font-size: 14px;
             "
           >
-            <p>Contractor Details:<%record[0].contractor_details %></p>
-            <p>Witness Inspector: <%record[0].witness_inspector %></p>
-            <p>Project Details: <%record[0].project_details %></p>
-            <p>QC Supervisor: <%record[0].qc_supervisor %></p>
+            <p>Contractor Details:<%record.contractor_details %></p>
+            <p>Witness Inspector: <%record.witness_inspector %></p>
+            <p>Project Details: <%record.project_details %></p>
+            <p>QC Supervisor: <%record.qc_supervisor %></p>
           </div>
         </div>
         <p style="border: 2px black solid; text-align: center; padding: 20px">

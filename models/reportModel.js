@@ -34,7 +34,8 @@ const reportModel = mongoose.Schema({
     contractor_details: String,
     witness_inspector: String,
     qc_supervisor: String,
-    project_details:String
+    project_details:String,
+    welder_name: String
 })
 
 const Report = mongoose.model("Report",reportModel);
