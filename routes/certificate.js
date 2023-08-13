@@ -66,5 +66,60 @@ router.get("/view/:certificateNo", async(req,res)=>{
     }
 
 })
+
+router.get("/edit/:certificateNo",async(req,res)=>{
+    const record = await Certificate.findOne({"certificateNo": req.params.certificateNo}).exec();
+    
+    if (record){
+        res.render("editCertificate",{record});
+        console.log(record.certificateNo);
+    }
+    else{
+        res.status(404).send("No Record Found");
+    }
+})
+
+router.post("/update/:certificateNo", async(req,res)=>{
+    try{
+    let body = req.body;
+    let certificateNo = req.params.certificateNo;
+    
+
+    if (req.files !== null){
+        if (req.files.profile !== null && req.files.profile !== undefined){
+            const profile = req.files.profile;
+            await profile.mv("./uploads/certificates/" + certificateNo + "/profile.jpg")
+        }
+
+        if (req.files.iqama !== undefined && req.files.iqama !== null){
+            const iqama = req.files.iqama;
+            await iqama.mv("./uploads/certificates/" + certificateNo + "/iqama.jpg")
+        }
+
+    }
+
+    await qrcode.toFile("./uploads/certificates/" + certificateNo + "/qrcode.png","http://localhost:4200/certificate/"+ certificateNo );
+
+    body['certificateNo'] = certificateNo;
+
+    const da = await Certificate.findOneAndDelete({"certificateNo" : certificateNo })
+    if (da['count'] === null){
+        body['count'] = certificateNo.split("_")[1];
+    }
+    else
+        body['count'] = da['count']
+    console.log(body['count']);
+    
+    const updated = await Certificate.create(req.body);
+
+    res.redirect("/certificate/view/"+ certificateNo);
+}
+catch (err){
+    console.error(err);
+    res.send("FAILED TO UPDATE");
+}
+
+
+})
 module.exports = router;
 

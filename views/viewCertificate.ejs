@@ -216,12 +216,12 @@
         </td>
         <td style="text-align: center;">
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <% if (record.virtualInpsectorChecked === "on") { %>
+            <% if (record.virtualInspectorChecked === "on") { %>
             <input type="checkbox" checked name="" id="" >
             <% } else { %>
               <input type="checkbox" name="" id="" >
               <% } %>
-            <h6><%= record.virtualInpsectorActual%></h6>
+            <h6><%= record.virtualInpsectorReport%></h6>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center;">
             <% if (record.radiographyChecked === "on") { %>
@@ -229,7 +229,7 @@
               <% } else { %>
                 <input type="checkbox" name="" id="" >
                 <% } %>
-            <h6><%= record.radiographyActual%></h6>
+            <h6><%= record.radiographyReport%></h6>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center;">
             <% if (record.mechTestChecked === "on") { %>
@@ -237,7 +237,7 @@
               <% } else { %>
                 <input type="checkbox" name="" id="" >
                 <% } %>
-            <h6><%= record.mechTestsActual%></h6>
+            <h6><%= record.mechTestsReport%></h6>
           </div>
 
         </td>
