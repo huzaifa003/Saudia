@@ -70,15 +70,15 @@
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">WTA Ref No</td>
-        <td style="border: 1px solid black;">GasWPS002REV002</td>
+        <td style="border: 1px solid black;"><%=record.wtaRef %></td>
         <td style="border: 1px solid black;font-weight: bold;">Joint Type</td>
-        <td style="border: 1px solid black;">AK12800600</td>
+        <td style="border: 1px solid black;"><%=record.jointType %></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Date of Test</td>
-        <td style="border: 1px solid black;">GasWPS002REV002</td>
+        <td style="border: 1px solid black;"><%=record.date_of_test %></td>
         <td style="border: 1px solid black;font-weight: bold;">Wield Type</td>
-        <td style="border: 1px solid black;">AK12800600</td>
+        <td style="border: 1px solid black;"><%=record.weldType %></td>
       </tr>
     </tbody>
     <thead>
@@ -92,107 +92,107 @@
     <tbody style="text-align: center">
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder Process(es)</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.welderProcessActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.welderProcessRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Types of Welder (manual/semi auto)
         </td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.typesOfWeldersActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typesOfWeldersRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Bracking (With/without)</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.brackingActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.brackingRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Types of wield</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.typesOfWieldActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typesOfWieldRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Product Types(Plate or Pipe)</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.productTypesActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.productTypesEditRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Diameter of Pipe</td>
-        <td style="text-align: left; border: 1px solid black;;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;;"><%=record.diameterOfPipeActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.diameterOfPipeRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Base Metal P Number to P Number</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.baseMetalp_pActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.baseMetalp_pRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Filler Metal or electrode sopecification
         </td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.fillerMetalActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.fillerMetalRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Filler Meta F-Number(S)</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.fillerMetalFNoActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.fillerMetalFNoRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Filer Metal addition/Deletion (GTAW/PAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.fillerMetalAdditionActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.fillerMetalAdditionRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Consumable Insert (GTAW or PAW)</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.consumableInsertActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.consumableInsertRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black; font-weight: bold;">
           Deposit thickness for each process
         </td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.depositeThicknessActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.depositeThicknessRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder position</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.welderPositionActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.welderPositionRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Vertical Progression</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.verticalProgressionActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.verticalProgressionRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Type of Fuel Gas(OFW)</td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.typeOfFuelGasActual%></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typeOfFuelGasRange%></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Insert gas backing(GTAW,PAW,GMAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.insertGasBackingActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.insertGasBackingRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Transfer Mode( spary,globulat or pulse to sort circuit-GMAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.transferModeActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.transferModeRange %></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Current Type/Polarity(AC,DCEP,DCEN)
         </td>
-        <td style="text-align: left; border: 1px solid black;">SMAW</td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2">1234</td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.currentTypePolarityActual %></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.currentTypePolarityRange %></td>
       </tr>
     </tbody>
     <thead>
@@ -216,31 +216,39 @@
         </td>
         <td style="text-align: center;">
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <input type="checkbox" name="" id="" >
-            <h6>_____________________________________</h6>
+            <% if (record.virtualInpsectorChecked === "on") { %>
+            <input type="checkbox" checked name="" id="" >
+            <% } else { %>
+              <input type="checkbox" name="" id="" >
+              <% } %>
+            <h6><%= record.virtualInpsectorActual%></h6>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <input type="checkbox" name="" id="" >
-            <h6>_____________________________________</h6>
+            <% if (record.radiographyChecked === "on") { %>
+              <input type="checkbox" checked name="" id="" >
+              <% } else { %>
+                <input type="checkbox" name="" id="" >
+                <% } %>
+            <h6><%= record.radiographyActual%></h6>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <input type="checkbox" name="" id="" >
-            <h6>_____________________________________</h6>
+            <input type="checkbox" value="<%= record.mechTestChecked%>" name="" id="" >
+            <h6><%= record.mechTestsActual%></h6>
           </div>
 
         </td>
         <td>
           <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <h6>_____________________________________</h6>
+            <h6><%= record.virtualInpsectorRange %></h6>
           </div>
           <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <h6>_____________________________________</h6>
+            <h6><%= record.radiographyRange%></h6>
           </div>
           <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <h6>_____________________________________</h6>
+            <h6><%= record.mechTestsRange%></h6>
           </div>
         </td>
       </tr>
