@@ -19,6 +19,7 @@ var certificateRouter = require('./routes/certificate')
 
 
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -36,6 +37,7 @@ app.use('/users', usersRouter);
 app.use('/report',reportRouter);
 app.use('/card',cardRouter);
 app.use('/certificate',certificateRouter)
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -51,6 +53,10 @@ app.use(function(req, res, next) {
 //   res.status(err.status || 500);
 //   res.render('error');
 // });
+
+// app.get('/', (req,res)=>{
+//   res.render('authentication')
+//  })
 
 mongoose.connect('mongodb+srv://arsalan:123@cluster0.1pceytg.mongodb.net/aetco?retryWrites=true&w=majority')
 .then(()=>{
