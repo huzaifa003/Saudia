@@ -70,7 +70,7 @@ button {
         <div style="border: 2px black solid" class="flex-between">
           <div class="logo"></div>
           <p style="text-align: center">
-            Welder Qualification Test Record Sheet | DOC NO # :<span></span>
+            Welder Qualification Test Record Sheet | DOC NO # :<span>R-<%= id %></span>
           </p>
           <img class = "logo" src="https://i.ibb.co/jgGwH67/logo.png">
         </div>
@@ -129,7 +129,7 @@ button {
       </div>
     </div>
   
-    <form style="padding: 20px 10px 0 10px" id="data-form" method="post" action="">
+    <form style="padding: 20px 10px 0 10px" id="data-form" method="post" action="/report/addRows/<%= id %>">
       <label for="ContarctorDetails">Contarctor Details:</label>
       <input type="text" name="contractor_details" id=""><br />
       <label for="witness_inspector">Witness Inspector:</label>
@@ -142,7 +142,7 @@ button {
       <input type="text" id="welder-id" name="welder_id" /><br />
 
       <label for="iqama-number">Iqama Number:</label>
-      <input type="text" id="iqama-number" name="iqama_number" /><br />
+      <input type="text" id="iqama-number" name="iqama_no" /><br />
 
       <label for="test-coupon-id">Test Coupon ID:</label>
       <input type="text" id="test-coupon-id" name="test_coupon_id" /><br />
@@ -167,7 +167,7 @@ button {
       <input
         type="text"
         id="type-of-weld-joint"
-        name="type_ofweld"
+        name="typeof_weld"
       /><br />
 
       <label for="thickness">Thickness:</label>
@@ -183,7 +183,7 @@ button {
       <input
         type="text"
         id="base-metal-p-number"
-        name="base-metal_p_number"
+        name="base_metal_p_number"
       /><br />
 
       <label for="filler-metal-spec"
