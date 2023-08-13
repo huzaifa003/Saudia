@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+   
     <title>Login Page</title>
 </head>
 <style>
@@ -110,12 +110,12 @@ a {
 
 </style>
 <body>
-    <form method="post" action="/auth">
+  
     <div class="login-container">
         <div class="login-box">
             <img src="../stylesheets/logo.png" alt="Company Logo" class="logo" />
             <h1 class="heading">Sign in to your account</h1>
-            <form class="login-form">
+            <form class="login-form" action="/auth" method="post">
                 <div class="form-group">
                     <label for="text">User Id</label>
                     <input type="text" id="id" name="id" placeholder="Enter your Id" required />
@@ -127,10 +127,10 @@ a {
                 <div class="form-group">
                     <label>User Role:</label>
                     <label class="checkbox-label">
-                        <input type="checkbox" name="user_role" value="supervisor" /> Supervisor
+                        <input type="radio" name="user_role" value="supervisor" /> Supervisor
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" name="userrole" value="inspector" /> Inspector
+                        <input type="radio" name="user_role" value="inspector" /> Inspector
                     </label>
                 </div>
               

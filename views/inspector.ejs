@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <img style="width: 150px;" src="./smallLogo.png" alt="">
+                <img style="width: 150px;" src="../stylesheets/smallLogo.png" alt="">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,13 +45,17 @@
                             <tr>
                                 <th>Date</th>
                                 <th>Wielder ID</th>
-                                <th>Wielder Name</th>
                                 <th>Project</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Report data will be added here using JavaScript -->
+                           <% records.map((data)=>{%>
+                            <td><%= data.date_of_inspection%></td>
+                            <td><%= data.welder_id%></td>
+                            <td><%= data.project_details%></td>
+                            <td> <button>Edit</button> <button>View</button>  </td>
+                          <% }) %> 
                         </tbody>
                     </table>
                 </div>
