@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const certificateModel = mongoose.Schema({
+    count: Number,
     certificateNo: String,
     iqamaPic: String,
     profilePic: String,
@@ -9,7 +10,7 @@ const certificateModel = mongoose.Schema({
     welderName: String,
     identification_wps: String,
     iqamaNo: String,
-    QualifcationStandard: String,
+    qualifcationStandard: String,
     welderId: String,
     baseMetalSpecs: String,
     wtaRef: String,
@@ -17,65 +18,68 @@ const certificateModel = mongoose.Schema({
     date_of_test: String,
     weldType: String,
 
-    welderProcessActualVals: String,
-    welderProcessRangeQual: String,
+    welderProcessActual: String,
+    welderProcessRange: String,
 
-    typesOfWeldersActualVals: String,
-    typesOfWeldersRangeQual: String,
+    typesOfWeldersActual: String,
+    typesOfWeldersRange: String,
 
-    brackingActualVals: String,
-    brackingRangeQual: String,
+    brackingActual: String,
+    brackingRange: String,
 
-    productTypeActualVals: String,
-    productTypeRangeQual: String,
+    typesOfWieldActual: String,
+    typesOfWieldRange: String,
 
-    diameterOfPipeActualVals: String,
-    diameterOfPipeRangeQual: String,
+    productTypeActual: String,
+    productTypeRange: String,
 
-    baseMetalp_pActualVals: String,
-    baseMetalp_pRangeQual: String,
+    diameterOfPipeActual: String,
+    diameterOfPipeRange: String,
 
-    fillerMetalActualVals: String,
-    fillerMetalRangeQual: String,
+    baseMetalp_pActual: String,
+    baseMetalp_pRange: String,
 
-    fillerMetalFNoActualVals: String,
-    fillerMetalFNoRangeQual: String,
+    fillerMetalActual: String,
+    fillerMetalRange: String,
 
-    fillerMetalAdditionActualVals: String,
-    fillerMetalAdditionRangeQual: String,
+    fillerMetalFNoActual: String,
+    fillerMetalFNoRange: String,
 
-    consumableInsertActualVals: String,
-    consumableInsertRangeQual: String,
+    fillerMetalAdditionActual: String,
+    fillerMetalAdditionRange: String,
 
-    depositeThicknessActualVals: String,
-    depositeThicknessRangeQual: String,
+    consumableInsertActual: String,
+    consumableInsertRange: String,
 
-    welderPositionActualVals: String,
-    welderPositionRangeQual: String,
+    depositeThicknessActual: String,
+    depositeThicknessRange: String,
 
-    verticalProgressionActualVals: String,
-    verticalProgressionRangeQual: String,
-    typesOfFuelGasActualVals: String,
-    typesOfFuelGasRangeQual: String,
+    welderPositionActual: String,
+    welderPositionRange: String,
 
-    insertGasBackingActualVals: String,
-    insertGasBackingRangeQual: String,
+    verticalProgressionActual: String,
+    verticalProgressionRange: String,
+    typesOfFuelGasActual: String,
+    typesOfFuelGasRange: String,
 
-    transferModelActualVals: String,
-    transferModelRangeQual: String,
+    insertGasBackingActual: String,
+    insertGasBackingRange: String,
 
-    currentTypePolarityActualVals: String,
-    currentTypePolarityRangeQual: String,
+    transferModelActual: String,
+    transferModelRange: String,
 
-    virtualInspectorChecked: Boolean,
+    currentTypePolarityActual: String,
+    currentTypePolarityRange: String,
+
+    virtualInspectorChecked: String,
     virtualInspectorReportNo: String,
     virtualInspectorResults: String,
 
-    radiographyChecked: Boolean,
+    radiographyChecked: String,
     radiographyReportNo: String,
     radiographyResults: String,
 
-    mechTestChecked: Boolean,
+    mechTestChecked: String,
     mechTestReportNo: String,
     mechTestResults: String,
 })

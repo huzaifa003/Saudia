@@ -23,7 +23,7 @@
 </style>
 
 <body>
-    <form>
+    <form action="/certificate/insert" method="post" enctype="multipart/form-data">
   <table border style="margin: auto; width: 100%;">
     <thead>
       <th><img style="width:200px" src="./AtecoLogoTransparent.png" alt=""></th>
@@ -53,33 +53,33 @@
       </thead>
       <tr>
         <td style="border: 1px solid black; font-weight: bold;">Welder's/Welder Operator's Name</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="welderName" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Identification of WPS/PQR</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="identification_wps" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Iqama / ID No</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="iqamaNo" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Qualification Standard</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="qualifcationStandard" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Welder ID No</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="welderId" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Base Metal Specification</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="baseMetalSpecs" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">WTA Ref No</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="wtaRef" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Joint Type</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="jointType" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Date of Test</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="date_of_test" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Wield Type</td>
-        <td style="border: 1px solid black;"><input type="text" name="" id=""></td>
+        <td style="border: 1px solid black;"><input type="text" name="weldType" id=""></td>
       </tr>
     </tbody>
     <thead>
@@ -93,107 +93,107 @@
     <tbody style="text-align: center">
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder Process(es)</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="welderProcessActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="welderProcessRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Types of Welder (manual/semi auto)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="typesOfWeldersActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="typesOfWeldersRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Bracking (With/without)</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="brackingActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="brackingRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Types of wield</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="typesOfWieldActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="typesOfWieldRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Product Types(Plate or Pipe)</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="productTypeActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="productTypeRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Diameter of Pipe</td>
-        <td style="text-align: left; border: 1px solid black;;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;;"><input type="text" name="diameterOfPipeActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="diameterOfPipeRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Base Metal P Number to P Number</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="baseMetalp_pActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="baseMetalp_pRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Filler Metal or electrode sopecification
         </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="fillerMetalActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="fillerMetalRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Filler Meta F-Number(S)</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="fillerMetalFNoActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="fillerMetalFNoRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Filer Metal addition/Deletion (GTAW/PAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="fillerMetalAdditionActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="fillerMetalAdditionRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Consumable Insert (GTAW or PAW)</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="consumableInsertActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="consumableInsertRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black; font-weight: bold;">
           Deposit thickness for each process
         </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="depositeThicknessActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="depositeThicknessRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder position</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="welderPositionActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="welderPositionRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Vertical Progression</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="verticalProgressionActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="verticalProgressionRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Type of Fuel Gas(OFW)</td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="typesOfFuelGasActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="typesOfFuelGasRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Insert gas backing(GTAW,PAW,GMAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="insertGasBackingActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="insertGasBackingRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Transfer Mode( spary,globulat or pulse to sort circuit-GMAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="transferModelActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="transferModelRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Current Type/Polarity(AC,DCEP,DCEN)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="text" name="" id=""></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="" id=""></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="currentTypePolarityActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="currentTypePolarityRange" id=""></td>
       </tr>
     </tbody>
     <thead>
@@ -217,18 +217,18 @@
         </td>
         <td style="text-align: center;">
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <input type="checkbox" name="" id="" >   
-            <input type="text" name="" id="">
+            <input type="checkbox" name="virtualInspectorChecked" id="" >   
+            <input type="text" name="virtualInspectorReportNo" id="">
           </div>
           <br>
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <input type="checkbox" name="" id="" >
-            <input type="text" name="" id="">
+            <input type="checkbox" name="radiographyChecked" id="" >
+            <input type="text" name="radiographyReportNo" id="">
           </div>
           <br>
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <input type="checkbox" name="" id="" >
-            <input type="text" name="" id="">
+            <input type="checkbox" name="mechTestChecked" id="" >
+            <input type="text" name="mechTestReportNo" id="">
           </div>
 
         </td>
@@ -236,17 +236,17 @@
             <br>
           <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <input type="text" name="" id="">
+            <input type="text" name="virtualInspectorResults" id="">
           </div>
           <br>
           <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <input type="text" name="" id="">
+            <input type="text" name="radiographyResults" id="">
           </div>
           <br>
           <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <input type="text" name="" id="">
+            <input type="text" name="mechTestResults" id="">
           </div>
         </td>
       </tr>
@@ -305,10 +305,10 @@
 </table>
 
 UPLOAD THE IQAMA IN JPG
-<input type="file" name="iqama" value="Upload Iqama in JPG"/>
+<input type="file" id="iqama" name="iqama" value="Upload Iqama in JPG"/>
 
 UPLOAD THE FILE IN JPG
-<input type="file" name = "profile" value="Upload Profile in JPG"/> 
+<input type="file" id="profile" name = "profile" value="Upload Profile in JPG"/> 
 <input class="hide-in-print" type="submit"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">
 </form>
 </body>
