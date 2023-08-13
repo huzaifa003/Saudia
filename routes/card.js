@@ -54,7 +54,7 @@ router.post("/insert", async (req, res) => {
 
 })
 
-router.get("/:card_no",async(req,res)=>{
+router.get("/view/:card_no",async(req,res)=>{
     let card_no = req.params.card_no;
 
     const record = await Card.findOne({"card_no" : card_no}).exec()
@@ -63,7 +63,7 @@ router.get("/:card_no",async(req,res)=>{
         res.render("viewCard",{'record':record})
     }
     else{
-        res.status(404);
+        res.status(404).json({"Status" : "FAILED"});
     }
 })
 

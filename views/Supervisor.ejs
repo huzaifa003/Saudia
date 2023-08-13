@@ -60,11 +60,11 @@
                                         <td><%= certificate.welderName %></td>
                                         <td><%= certificate.clientName %></td>
                                         <td style="display: flex; align-items: stretch;">
-                                            <form action="/certificate/edit/:<%= certificate.certificateNo %>" method="GET">
+                                            <form action="/certificate/edit/<%= certificate.certificateNo %>" method="POST">
                                             <input id="" type="submit" value="Edit"></input> 
                                             </form>
 
-                                            <form action="/certificate/view/:<%= certificate.certificateNo %>">
+                                            <form action="/certificate/view/<%= certificate.certificateNo %>">
                                             <input type="submit" value="View"></input>
                                             </form>
                                         </td>
