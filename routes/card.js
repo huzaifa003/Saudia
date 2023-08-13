@@ -53,4 +53,17 @@ router.post("/insert", async (req, res) => {
 
 })
 
+router.get("/:card_no",async(req,res)=>{
+    let card_no = req.params.card_no;
+
+    const record = Card.findOne({"card_no" : card_no})
+
+    if (record){
+        res.render("viewCard",{record})
+    }
+    else{
+        res.status(404);
+    }
+})
+
 module.exports = router;
