@@ -7,7 +7,7 @@ const path = require('path');
 var router = express.Router();
 
 router.get("/", async (req,res)=>{
-    res.render("/")
+    res.render("InsertCertificate")
 })
 
 router.post("/insert", async (req,res)=>{
