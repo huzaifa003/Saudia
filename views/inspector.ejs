@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welder Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <img style="width: 150px;" src="./smallLogo.png" alt="">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <button class="btn btn-outline-success me-2" type="button">Inspection Report</button>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <button  class="btn btn-outline-danger me-2" type="button"> <a href="#"></a> Logout</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <div class="container">
+        <!-- Inspector Report Details Table -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-left mb-4">Inspector Report Details</h2>
+                <!-- Add search bar -->
+                <input type="text" class="form-control mb-2" id="reportSearch" placeholder="Search...">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="reportTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Date</th>
+                                <th>Wielder ID</th>
+                                <th>Wielder Name</th>
+                                <th>Project</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Report data will be added here using JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+      
+        // JavaScript code for search functionality
+        const reportSearchInput = document.getElementById('reportSearch');
+        const reportTable = document.querySelector('#reportTable tbody');
+        const reportData = [
+            { Date: '12-2-2001', WielderId: 'W001', WielderName: 'WielderA', Project: 'Project A' },
+            { Date: '12-2-2001', WielderId: 'W002', WielderName: 'WielderB', Project: 'Project B' },
+            { Date: '12-2-2001', WielderId: 'W003', WielderName: 'WielderC', Project: 'Project C' },
+            { Date: '12-2-2001', WielderId: 'W004', WielderName: 'WielderD', Project: 'Project D' },
+            { Date: '12-2-2001', WielderId: 'W005', WielderName: 'WielderE', Project: 'Project E' }
+        ];
+
+        reportSearchInput.addEventListener('input', function() {
+            const searchText = reportSearchInput.value.toLowerCase();
+            reportTable.innerHTML = '';
+
+            reportData.forEach(report => {
+                if (Object.values(report).some(data => data.toLowerCase().includes(searchText))) {
+                    const row = document.createElement('tr');
+                    Object.values(report).forEach(data => {
+                        const cell = document.createElement('td');
+                        cell.textContent = data;
+                        row.appendChild(cell);
+                    });
+                    const actionCell = document.createElement('td');
+                    const viewButton = document.createElement('button');
+                    viewButton.className = 'btn btn-sm btn-primary';
+                    viewButton.textContent = 'View';
+                    const editButton = document.createElement('button');
+                    editButton.className = 'btn btn-sm btn-warning';
+                    editButton.textContent = 'Edit';
+                    actionCell.appendChild(viewButton);
+                    actionCell.appendChild(editButton);
+                    row.appendChild(actionCell);
+                    reportTable.appendChild(row);
+                }
+            });
+        });
+
+    </script>
+      
+    
+</body>
+</html>

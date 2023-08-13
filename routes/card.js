@@ -9,6 +9,7 @@ var router = express.Router();
 router.get("/", async (req, res) => {
     res.render("insertCard");
 })
+
 router.post("/insert", async (req, res) => {
     let body = req.body;
     const last_one = await Card.findOne().sort({ _id: -1 }).exec();
