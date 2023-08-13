@@ -41,6 +41,7 @@
                         <table class="table table-bordered table-striped" id="certificateTable">
                             <thead class="table-dark">
                                 <tr>
+                                    <th> Serial No</th>
                                     <th>Issued In</th>
                                     <th>Certificate No</th>
                                     <th>Welder ID</th>
@@ -50,7 +51,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                           
+                                <% certificateData.forEach(function(certificate, index){ %>
+                                    <tr>
+                                        <td><%= index + 1 %></td>
+                                        <td><%= certificate.date_of_test %></td>
+                                        <td><%= certificate.certificateNo %></td>
+                                        <td><%= certificate.welderId %></td>
+                                        <td><%= certificate.welderName %></td>
+                                        <td><%= certificate.clientName %></td>
+                                        <td style="display: flex; align-items: stretch;">
+                                            <form action="/certificate/edit/:<%= certificate.certificateNo %>" method="GET">
+                                            <input id="" type="submit" value="Edit"></input> 
+                                            </form>
+
+                                            <form action="/certificate/view/:<%= certificate.certificateNo %>">
+                                            <input type="submit" value="View"></input>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                <% }) %>
                             </tbody>
                         </table>
                         

@@ -8,7 +8,7 @@ var mongoose = require('mongoose')
 
 var app = express();
 app.use(upload({
-  debug : true
+  // debug : true
 }))
 
 var indexRouter = require('./routes/index');

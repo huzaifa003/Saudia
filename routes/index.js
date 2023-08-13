@@ -1,44 +1,61 @@
 var express = require('express');
-const user = require('../models/userModel')
-const Report = require ('../models/reportModel')
+const User = require('../models/userModel')
+const Report = require('../models/reportModel')
+const Card = require('../models/cardModel')
+const Certificate = require('../models/certificateModel')
 var router = express.Router();
 
 
-const getAllReports= async()=>{
- return await Report.find().exec()
+const getAllReports = async () => {
+  return await Report.find().exec()
 }
 
-router.get('/',function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render("authentication")
 });
-router.get('/supervisor',(req,res)=>{
+router.get('/supervisor', async (req, res) => {
+  const cardData = await Card.find().exec()
+  const reportData = await Report.find().exec()
+  const certificateData = await Certificate.find().exec()
 
-  res.render('Supervisor')
+  console.log("---------------- card DATA---------------------")
+  console.log(cardData);
+  console.log("---------------- card DATA END--------------------")
+
+  // console.log("---------------- report DATA---------------------")
+  // console.log(reportData);
+  // console.log("---------------- report DATA END--------------------")
+
+  // console.log("---------------- certificate DATA---------------------")
+  // console.log(certificateData);
+  // console.log("---------------- certificate DATA END--------------------")
+
+
+  res.render('Supervisor',{"cardData" : cardData, "reportData": reportData, "certificateData": certificateData})
 })
 
-router.post('/auth',  function(req, res) {
+router.post('/auth', function (req, res) {
   console.log(req.body.id);
   if (req.body.user_role === 'supervisor') {
-     const User = user.findOne({ 'userId':req.body.id, 'password': req.body.password });
-     console.log(User);
-     if(User){
+    const user = User.findOne({ 'userId': req.body.id, 'password': req.body.password });
+    console.log(user);
+    if (user) {
       console.log('User Found ');
       res.redirect('/supervisor')
-     }else{
+    } else {
       console.log('Not Found ');
-     }
+    }
   }
   if (req.body.user_role === 'inspector') {
-    const User = user.findOne({ 'userId':req.body.id, 'password': req.body.password });
-    console.log(User);
-    if(User){
-     console.log('User Found ');
-     res.render('inspector', {'records':[getAllReports()]})
-    }else{
-     console.log('Not Found ');
+    const user = User.findOne({ 'userId': req.body.id, 'password': req.body.password });
+    console.log(user);
+    if (user) {
+      console.log('User Found ');
+      res.render('inspector', { 'records': [getAllReports()] })
+    } else {
+      console.log('Not Found ');
     }
- }
+  }
 });
 
 module.exports = router;
-  
