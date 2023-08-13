@@ -232,7 +232,11 @@
             <h6><%= record.radiographyActual%></h6>
           </div>
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <input type="checkbox" value="<%= record.mechTestChecked%>" name="" id="" >
+            <% if (record.mechTestChecked === "on") { %>
+              <input type="checkbox" checked name="" id="" >
+              <% } else { %>
+                <input type="checkbox" name="" id="" >
+                <% } %>
             <h6><%= record.mechTestsActual%></h6>
           </div>
 
