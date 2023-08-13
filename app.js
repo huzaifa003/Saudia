@@ -15,7 +15,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var reportRouter = require('./routes/report')
 var cardRouter = require('./routes/card')
-
+var certificateRouter = require('./routes/certificate')
 
 
 
@@ -35,6 +35,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/report',reportRouter);
 app.use('/card',cardRouter);
+app.use('/certificate',certificateRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

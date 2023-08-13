@@ -1,104 +1,84 @@
 const mongoose = require('mongoose');
 const certificateModel = mongoose.Schema({
-iqamaPic:String,
-profilePic:String,
-qrLink:String,
-clientName:String,
-supervisorName:String,
-welderName : String,
-identification_wps:String,
-iqamaNo : String,
-QualifcationStandard:String,
-welderId:String,
-baseMetalSpecs:String,
-wtaRef : String,
-jointType:String,
-date_of_test:String,
-weldType:String,
-welderProcess:{
-    actualVals:String,
-    rangeQual:String
-},
-typesOfWelders:{
-    actualVals:String,
-    rangeQual:String
-},
-bracking:{
-    actualVals:String,
-    rangeQual:String
-},
-productType:{
-    actualVals:String,
-    rangeQual:String
-},
-diameterOfPipe:{
-    actualVals:String,
-    rangeQual:String
-},
-baseMetalp_p:{
-    actualVals:String,
-    rangeQual:String
-},
-fillerMetal:{
-    actualVals:String,
-    rangeQual:String
-},
-fillerMetalFNo:{
-    actualVals:String,
-    rangeQual:String
-},
-fillerMetalAddition:{
-    actualVals:String,
-    rangeQual:String
-},
-consumableInsert:{
-    actualVals:String,
-    rangeQual:String
-},
-depositeThickness:{
-    actualVals:String,
-    rangeQual:String
-},
-welderPosition:{
-    actualVals:String,
-    rangeQual:String
-},
-verticalProgression:{
-    actualVals:String,
-    rangeQual:String
-},
-typesOfFuelGas:{
-    actualVals:String,
-    rangeQual:String
-},
-insertGasBacking:{
-    actualVals:String,
-    rangeQual:String
-},
-transferModel:{
-    actualVals:String,
-    rangeQual:String
-},
-currentTypePolarity:{
-    actualVals:String,
-    rangeQual:String
-},
-virtualInspector:{
-    checked:Boolean,
-    reportNo:String,
-    results:String,
-},
-radiography:{
-    checked:Boolean,
-    reportNo:String,
-    results:String,
-},
-mechTest:{
-    checked:Boolean,
-    reportNo:String,
-    results:String,
-}
+    certificateNo: String,
+    iqamaPic: String,
+    profilePic: String,
+    qrLink: String,
+    clientName: String,
+    supervisorName: String,
+    welderName: String,
+    identification_wps: String,
+    iqamaNo: String,
+    QualifcationStandard: String,
+    welderId: String,
+    baseMetalSpecs: String,
+    wtaRef: String,
+    jointType: String,
+    date_of_test: String,
+    weldType: String,
+
+    welderProcessActualVals: String,
+    welderProcessRangeQual: String,
+
+    typesOfWeldersActualVals: String,
+    typesOfWeldersRangeQual: String,
+
+    brackingActualVals: String,
+    brackingRangeQual: String,
+
+    productTypeActualVals: String,
+    productTypeRangeQual: String,
+
+    diameterOfPipeActualVals: String,
+    diameterOfPipeRangeQual: String,
+
+    baseMetalp_pActualVals: String,
+    baseMetalp_pRangeQual: String,
+
+    fillerMetalActualVals: String,
+    fillerMetalRangeQual: String,
+
+    fillerMetalFNoActualVals: String,
+    fillerMetalFNoRangeQual: String,
+
+    fillerMetalAdditionActualVals: String,
+    fillerMetalAdditionRangeQual: String,
+
+    consumableInsertActualVals: String,
+    consumableInsertRangeQual: String,
+
+    depositeThicknessActualVals: String,
+    depositeThicknessRangeQual: String,
+
+    welderPositionActualVals: String,
+    welderPositionRangeQual: String,
+
+    verticalProgressionActualVals: String,
+    verticalProgressionRangeQual: String,
+    typesOfFuelGasActualVals: String,
+    typesOfFuelGasRangeQual: String,
+
+    insertGasBackingActualVals: String,
+    insertGasBackingRangeQual: String,
+
+    transferModelActualVals: String,
+    transferModelRangeQual: String,
+
+    currentTypePolarityActualVals: String,
+    currentTypePolarityRangeQual: String,
+
+    virtualInspectorChecked: Boolean,
+    virtualInspectorReportNo: String,
+    virtualInspectorResults: String,
+
+    radiographyChecked: Boolean,
+    radiographyReportNo: String,
+    radiographyResults: String,
+
+    mechTestChecked: Boolean,
+    mechTestReportNo: String,
+    mechTestResults: String,
 })
 
-const Certificate = mongoose.model("Certificate",certificateModel);
+const Certificate = mongoose.model("Certificate", certificateModel);
 module.exports = Certificate
