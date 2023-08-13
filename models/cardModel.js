@@ -15,7 +15,7 @@ const cardSchema = mongoose.Schema({
     f_no_qualified: String,
     place_of_issue: String,
     date_of_test: String,
-    wps_pqr_no: String,
+    wps_pqr_no: String, 
     joint_type: String,
     position_qualified: String,
     test_thickness: String,

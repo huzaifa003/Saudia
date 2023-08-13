@@ -10,7 +10,7 @@
 
 <body style="width: 216mm; height: 279mm; margin: auto">
 
-  <form action="/card/insert" method="post" enctype="multipart/form-data">
+  <form action="/card/update/<%= record.card_no %>" method="post" enctype="multipart/form-data">
   <div class="card">
     <div class="flex-between">
       <img  style="width: 150px; height: 100px;" class="logo" src="/images/logo.png" alt="logo" />
@@ -23,17 +23,17 @@
         </p>
         <p style="text-transform: uppercase">Welder Qualification Card</p>
       </div>
-      <!-- <img style="width: 100px; height: 100px;" class="qrcode" src="qr.jpg" alt="QR Code" /> -->
+      <!-- <img  style="width: 100px; height: 100px;" class="qrcode" src="qr.jpg" alt="QR Code" /> -->
     </div>
     <div>
       <label style=" cursor: pointer; background-color: rgb(4, 111, 0); color: white; padding: 5px;" for="files"
         class="btn">Select Image</label>
-      <input  id="files" style="visibility:hidden;" name="card" type="file" accept="image/jpg" onchange="previewImage(event)">
+      <input id="files" value="/<%= record.card_no %>/<%= record.image %>" style="visibility:hidden;" name="card" type="file" accept="image/jpg" onchange="previewImage(event)">
 
     </div>
     <br>
     <div class="flex">
-      <img  id="preview-selected-image" style="width: 200px; height: 200px;" class="person-img"/>
+      <img src="/<%= record.card_no %>/<%= record.image %>" id="preview-selected-image" style="width: 200px; height: 200px;" class="person-img"/>
       <table id="table-1">
         <tbody>
           <tr>
@@ -42,11 +42,11 @@
           </tr>
           <tr>
             <td>Welder Name</td>
-            <td>:<input type="text" name="wedler_name"  id=""></td>
+            <td>:<input type="text" name="welder_name" value="<%=record.welder_name %>" id=""></td>
           </tr>
           <tr>
             <td>Iqama No</td>
-            <td>:<input type="text" name="iqama_no" id=""></td>
+            <td>:<input type="text" name="iqama_no" value="<%=record.iqama_no  %>" id=""></td>
           </tr>
           <!-- <tr>
               <td>Welder ID</td>
@@ -71,64 +71,64 @@
     </div>
     <p style="margin-top: 8px; font-size: 14px">
       This is to certify that this person has been tested in accordance with
-      requirements of <span style="color: #14ab55">ASME SEC IX - <input type="text" name="year" id=""></span>
+      requirements of <span style="color: #14ab55">ASME SEC IX - <input value="<%=record.year %>" type="text" name="year" id=""></span>
     </p>
   </div>
   <div style="border: 2px black solid; margin-top: 10px">
     <table id="table-2" style="width: 100%">
       <tr>
         <td>Card No</td>
-        <td><input hidden type="text" name="card_no" id=""></td>
+        <td><input type="text" hidden name="card_no" id="" value="<%=record.card_no %>"></td>
         <td>WPS/PQR No.</td>
-        <td><input type="text" name="wps_pqr_no" id=""></td>
+        <td><input type="text" value="<%=record.wps_pqr_no %>" name="wps_pqr_no" id=""></td>
       </tr>
       <tr>
         <td>Process</td>
-        <td><input type="text" name="process" id=""></td>
+        <td><input type="text" name="process" value="<%=record.process %>" id=""></td>
         <td>Joint Type</td>
-        <td><input type="text" name="joint_type" id=""></td>
+        <td><input type="text" value="<%=record.joint_type %>" name="joint_type" id=""></td>
       </tr>
       <tr>
         <td>Test Position</td>
-        <td><input type="text" name="test_position" id=""></td>
+        <td><input type="text" name="test_position" value="<%=record.test_position %>" id=""></td>
         <td>Position Qualified</td>
-        <td><input type="text" name="position_qualified" id=""></td>
+        <td><input type="text" value="<%=record.position_qualified %>" name="position_qualified" id=""></td>
       </tr>
       <tr>
         <td>Vertical Progression</td>
-        <td><input type="text" name="vertical_progression" id=""></td>
+        <td><input type="text" value="<%=record.vertical_progression %>" name="vertical_progression" id=""></td>
         <td>Test Thickness</td>
-        <td><input type="text" name="test_thickness" id=""></td>
+        <td><input type="text" value="<%=record.test_thickness %>" name="test_thickness" id=""></td>
       </tr>
       <tr>
         <td>Test Dia</td>
-        <td><input type="text" name="test_dia" id=""></td>
+        <td><input type="text" value="<%=record.test_dia %>" name="test_dia" id=""></td>
         <td rowspan="2">Range Qualified</td>
         <td rowspan="2">
-          <input type="text" name="range_qualified" id="">
+          <input type="text" value="<%=record.range_qualified %>" name="range_qualified" id="">
         </td>
       </tr>
       <tr>
         <td>P No Qualified</td>
-        <td><input type="text" name="p_no_qualified" id=""></td>
+        <td><input type="text"value="<%=record.p_no_qualified %>" name="p_no_qualified" id=""></td>
       </tr>
       <tr>
         <td>F No Qualified</td>
-        <td><input type="text" name="f_no_qualified" id=""></td>
+        <td><input type="text" name="f_no_qualified" value="<%=record.f_no_qualified %>" id=""></td>
         <td>Electrode Class Used</td>
-        <td><input type="text" name="electrode_class_used" id=""></td>
+        <td><input type="text" name="electrode_class_used" value="<%=record.electrode_class_used %>" id=""></td>
       </tr>
       <tr>
         <td>Place of Issue</td>
-        <td><input type="text" name="place_of_issue" id=""></td>
+        <td><input type="text"value="<%=record.place_of_issue %>" name="place_of_issue" id=""></td>
         <td>Test Method</td>
-        <td><input type="text" name="test_method" id=""></td>
+        <td><input type="text" value="<%=record.test_method %>" name="test_method" id=""></td>
       </tr>
       <tr>
         <td>Date of Test</td>
-        <td><input type="date" name="date_of_test" id=""></td>
+        <td><input type="date" value="<%=record.date_of_test %>" name="date_of_test" id=""></td>
         <td>Date of Exp</td>
-        <td><input type="date" name="date_of_expiry" id=""></td>
+        <td><input type="date" value="<%=record. date_of_expiry%>" name="date_of_expiry" id=""></td>
       </tr>
     </table>
     <p style="border: 2px black solid; padding: 5px; font-size: 15px">
@@ -138,7 +138,7 @@
     </p>
   </div>
 
-  <input type="submit" value="Saves"/>
+  <input type="submit" value="Update"/>
 </form>
 
   <style>
@@ -209,6 +209,7 @@
 </body>
 
 <script>
+
   /**
  * Create an arrow function that will be called when an image is selected.
  */
@@ -241,6 +242,9 @@ const previewImage = (event) => {
          * Show the element by changing the display value to "block".
          */
         imagePreviewElement.style.display = "block";
+
+        const files = document.querySelector("#files");
+        files.value = imageSrc;
     }
 };
 </script>
