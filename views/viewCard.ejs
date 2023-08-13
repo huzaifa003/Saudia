@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  
   <title>Document</title>
 </head>
+
 
 <body style="width: 216mm; height: 279mm; margin: auto">
   <div class="card">
     <div class="flex-between">
-      <img style="width: 150px; height: 100px;" class="logo" src="logo.png" alt="logo" />
+      <img style="width: 150px; height: 100px;" class="logo" src="../stylesheets/logo.png" alt="logo" />
       <div style="text-align: center; color: #14ab55">
         <p style="text-transform: uppercase">
           Ateco Arabian Testing Evolution
@@ -21,106 +22,106 @@
         </p>
         <p style="text-transform: uppercase">Welder Qualification Card</p>
       </div>
-      <img style="width: 100px; height: 100px;" class="qrcode" src="qr.jpg" alt="QR Code" />
+      <img style="width: 100px; height: 100px;" class="qrcode" src="../<%= record.card_no%>/<%=record.qr%>" alt="QR Code" />
     </div>
     <div class="flex">
       <img style="width: 200px; height: 200px;" class="person-img"
-        src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg" alt="Person" />
+        src="../<%=record.card_no%>/<%= record.image%>" alt="Person" />
       <table id="table-1">
         <tbody>
           <tr>
             <td>Company</td>
-            <td>: Company name</td>
+            <td>:<%= record.company %></td>
           </tr>
           <tr>
             <td>Welder Name</td>
-            <td>: Name</td>
+            <td>: <%= record.welder_name %></td>
           </tr>
           <tr>
             <td>Iqama No</td>
-            <td>: ####</td>
+            <td>:<%= record.iqama_no %></td>
           </tr>
           <tr>
             <td>Welder ID</td>
-            <td>: AT-02</td>
+            <td>: <%= record.welder_id %></td>
           </tr>
           <tr>
             <td>Card No</td>
-            <td>: CAL-2023-1213</td>
+            <td>: <%= record.card_no  %></td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="flex-between" style="margin-top: 20px">
       <div>
-        <p style="color: gray">Saroj Kumar Mani</p>
+        <p style="color: gray"><%=record.authorized_by %></p>
         <p style="margin-top: 3px">Authorized by</p>
       </div>
       <div>
-        <p style="color: gray">Thafseer Thenisseri Kandy</p>
+        <p style="color: gray"><%= record.welding_inspector %></p>
         <p style="margin-top: 3px">Welding Inspector</p>
       </div>
     </div>
     <p style="margin-top: 8px; font-size: 14px">
       This is to certify that this person has been tested in accordance with
-      requirements of <span style="color: #14ab55">ASME SEC IX - 2021</span>
+      requirements of <span style="color: #14ab55">ASME SEC IX - <%=record.year %></span>
     </p>
   </div>
   <div style="border: 2px black solid; margin-top: 10px">
     <table id="table-2" style="width: 100%">
       <tr>
         <td>Card No</td>
-        <td>CAL-2023-5362</td>
+        <td><%= record.card_no%></td>
         <td>WPS/PQR No.</td>
-        <td>RTCC-1620-QM-WE-WPS-01 REV C01</td>
+        <td><%= record.wps_pqr_no%></td>
       </tr>
       <tr>
         <td>Process</td>
-        <td>SMAW(Manual)</td>
+        <td><%= record.process %></td>
         <td>Joint Type</td>
-        <td>SINGLE-V-Groove - BUTT</td>
+        <td><%= record.joint_type%></td>
       </tr>
       <tr>
         <td>Test Position</td>
-        <td>5G</td>
+        <td><%=record.test_position %></td>
         <td>Position Qualified</td>
-        <td>F, V, O [Groove] & All [Fillet]</td>
+        <td><%= record.position_qualified%></td>
       </tr>
       <tr>
         <td>Vertical Progression</td>
-        <td>Uphill</td>
+        <td><%=record.vertical_progression%></td>
         <td>Test Thickness</td>
-        <td>11.10mm</td>
+        <td><%= record.test_thickness %></td>
       </tr>
       <tr>
         <td>Test Dia</td>
-        <td>10 inch</td>
+        <td><%= record.test_position %></td>
         <td rowspan="2">Range Qualified</td>
         <td rowspan="2">
-          t(E7010-6mm Max, E8018-16.2mm Max), 0, D*2.7/8 inch to unlimited)
+      <%= record.range_qualified %>
         </td>
       </tr>
       <tr>
         <td>P No Qualified</td>
-        <td>P1 through P15F, P34, and P41 through P49</td>
+        <td><%= record.p_no_qualified %></td>
       </tr>
       <tr>
         <td>F No Qualified</td>
-        <td>F3(With or Without) & F1, F2, F4 (With Backing)</td>
+        <td><%= record.f_no_qualified %></td>
         <td>Electrode Class Used</td>
-        <td>E 7010-P1+38018-C3H4R</td>
+        <td><%=record.electrode_class_used %></td>
       </tr>
       <tr>
         <td>Place of Issue</td>
-        <td>Dammam</td>
+        <td><%= record.place_of_issue %></td>
         <td>Test Method</td>
-        <td>Radiography</td>
+        <td><%= record.test_method %></td>
       </tr>
       <tr>
         <td>Date of Test</td>
-        <td>24/May/2023</td>
+        <td><%= record.date_of_test %></td>
         <td>Date of Exp</td>
-        <td>23/Nov/2023</td>
+        <td><%=record.date_of_expiry%></td>
       </tr>
     </table>
     <p style="border: 2px black solid; padding: 5px; font-size: 15px">

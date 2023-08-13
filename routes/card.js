@@ -56,10 +56,10 @@ router.post("/insert", async (req, res) => {
 router.get("/:card_no",async(req,res)=>{
     let card_no = req.params.card_no;
 
-    const record = Card.findOne({"card_no" : card_no})
-
+    const record = await Card.findOne({"card_no" : card_no}).exec()
+    console.log(record)
     if (record){
-        res.render("viewCard",{record})
+        res.render("viewCard",{'record':record})
     }
     else{
         res.status(404);
