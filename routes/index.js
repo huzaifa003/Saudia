@@ -9,7 +9,5 @@ router.get('/', function(req, res, next) {
 //   const { id,password,user_role }=req.body
 //   console.log(user_role);
 // })
-
-
 module.exports = router;
   
