@@ -6,19 +6,24 @@ var logger = require('morgan');
 var upload = require('express-fileupload')
 var mongoose = require('mongoose')
 
+var app = express();
+app.use(upload({
+  // debug : true
+}))
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var reportRouter = require('./routes/report')
 var cardRouter = require('./routes/card')
 
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(upload())
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

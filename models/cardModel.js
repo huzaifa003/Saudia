@@ -26,7 +26,8 @@ const cardSchema = mongoose.Schema({
     authorized_by : String,
     welding_inspector: String,
     image: String,
-    qr: String
+    qr: String,
+    year: String
 })
 
 const Card = mongoose.model("Card",cardSchema);
