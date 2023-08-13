@@ -6,7 +6,12 @@ const Card = require('../models/cardModel');
 const path = require('path');
 var router = express.Router();
 
+router.get("/", async (req,res)=>{
+    res.render("/")
+})
 
-
+router.post("/insert", async (req,res)=>{
+    
+})
 module.exports = router;
 
