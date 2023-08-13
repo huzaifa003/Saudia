@@ -51,5 +51,20 @@ router.post("/insert", async (req,res)=>{
 
 
 })
+
+router.get("/view/:certificateNo", async(req,res)=>{
+    const certificateNo = req.params.certificateNo;
+
+    const record = await Certificate.findOne({"certificateNo": certificateNo}).exec();
+    
+    if (record){
+        res.render("viewCertificate",{record});
+        console.log(record.certificateNo);
+    }
+    else{
+        res.status(404).send("No Record Found");
+    }
+
+})
 module.exports = router;
 
