@@ -46,9 +46,9 @@ router.post("/insert", async (req,res)=>{
     await qrcode.toFile("./uploads/certificates/" + body['certificateNo'] + "/qrcode.png","http://localhost:4200/certificate/view/" + body['certificateNo']);
 
     const cerf = await Certificate.create(req.body);
-
-    res.send(cerf);
-
+    const record = cerf
+    // res.send(cerf);
+    res.render("viewCertificate",{record});
 
 })
 
