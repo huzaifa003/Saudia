@@ -10,7 +10,7 @@
 
 
 <body style="width: 216mm; height: 279mm; margin: auto">
-  <div class="card">
+  <div class="card" style="width: 568px;">
     <div class="flex-between">
       <img style="width: 150px; height: 100px;" class="logo" src="/images/logo.png" alt="logo" />
       <div style="text-align: center; color: #14ab55">
@@ -52,7 +52,7 @@
         </tbody>
       </table>
     </div>
-    <div class="flex-between" style="margin-top: 20px">
+    <div class="flex-between" style="margin-top: 3px">
       <div>
         <p style="color: gray"><%=record.authorized_by %></p>
         <p style="margin-top: 3px">Authorized by</p>
@@ -67,7 +67,7 @@
       requirements of <span style="color: #14ab55">ASME SEC IX - <%=record.year %></span>
     </p>
   </div>
-  <div style="border: 2px black solid; margin-top: 10px">
+  <div style=" width: 592px; border: 2px black solid; margin-top: 10px ; ">
     <table id="table-2" style="width: 100%">
       <tr>
         <td>Card No</td>
@@ -130,6 +130,10 @@
       welder's qualification has been maintained.
     </p>
   </div>
+<br>
+  <a class="hide-in-print" href="/Supervisor"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">Back to Home</a>
+
+  <a class="hide-in-print" onclick="window.print(); return false;" href="/Supervisor"  style="text-decoration: none; background-color: red; color: white; padding: 2px;">Download PDF</a>
   <style>
     * {
       margin: 0;
@@ -138,7 +142,11 @@
       font-weight: 600;
 
     }
-
+    @media print {
+      .hide-in-print {
+        display: none;
+      }
+    }
     .card {
       margin-top: 10px;
       padding: 10px;
