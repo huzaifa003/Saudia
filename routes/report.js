@@ -38,33 +38,33 @@ router.post("/insert",async(req,res)=>{
 })
 
 
-router.post('/addRows/:id',async(req,res)=>{
-    const body = req.body;
+// router.post('/addRows/:id',async(req,res)=>{
+//     const body = req.body;
 
 
-    no = req.params.id
-    body['serial_no'] = no;
-    // body['welder_id'] = "w-" + String(no);
-    body['doc_id'] = "r-" + String(no);
-        try {
-        const report = await Report.create(req.body);
+//     no = req.params.id
+//     body['serial_no'] = no;
+//     // body['welder_id'] = "w-" + String(no);
+//     body['doc_id'] = "r-" + String(no);
+//         try {
+//         const report = await Report.create(req.body);
         
-        let record = await Report.find({ doc_id: { $all: body.doc_id } })
-        if (!Array.isArray(record)){
-            record = [record];
-        }
-        console.log(record);
-        if (record){
-            res.status(200).render("InsertAndViewReport",{"id" : no});
-            return;
-        }
+//         let record = await Report.find({ doc_id: { $all: body.doc_id } })
+//         if (!Array.isArray(record)){
+//             record = [record];
+//         }
+//         console.log(record);
+//         if (record){
+//             res.status(200).render("InsertAndViewReport",{"id" : no});
+//             return;
+//         }
         
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({"message" : error.message});
-    }
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json({"message" : error.message});
+//     }
     
-})
+// })
 
 router.post("/edit/:doc_id", async(req,res)=>{
     let doc_id = req.params.doc_id;

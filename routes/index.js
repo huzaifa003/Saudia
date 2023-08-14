@@ -30,6 +30,12 @@ router.get('/supervisor', async (req, res) => {
   res.render('Supervisor',{"cardData" : cardData, "reportData": reportData, "certificateData": certificateData})
 })
 
+
+router.get('/inspector',async(req,res)=>{
+  const reportData = await Report.find().exec()
+  res.render('inspector', {"reportData": reportData });
+})
+
 router.post('/auth', async function (req, res) {
   console.log(req.body.id);
   if (req.body.user_role === 'supervisor') {
@@ -47,8 +53,7 @@ router.post('/auth', async function (req, res) {
     console.log(user);
     if (user) {
       console.log('User Found ');
-      const reportData = await Report.find().exec()
-      res.render('inspector', {"reportData": reportData });
+      res.redirect('/inspector')
     } else {
       console.log('Not Found ');
     }
