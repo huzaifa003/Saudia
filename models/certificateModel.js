@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 const certificateModel = mongoose.Schema({
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: function(date) {
+            return date.toLocaleDateString('en-US');
+        }
+    },
     count: Number,
     certificateNo: String,
     iqamaPic: String,
@@ -8,6 +15,7 @@ const certificateModel = mongoose.Schema({
     clientName: String,
     supervisorName: String,
     welderName: String,
+    welderInspector:String,
     identification_wps: String,
     iqamaNo: String,
     qualifcationStandard: String,

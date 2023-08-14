@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 
 const cardSchema = mongoose.Schema({
+    createdAt: {
+        type: Date,
+        default: Date.now
+        ,get: function(date) {
+            return date.toLocaleDateString('en-US');
+        }
+    },
     count: Number,
     company: String,
     welder_name: String,

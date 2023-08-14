@@ -169,7 +169,7 @@ button {
           name="type-of-weld-joint"
           value="<%= record?.type_of_welding %>"
         /><br />
-      @@ -123,16 +126,16 @@
+        <label for="thickness">Thickness:</label>
         <input type="text" id="thickness" name="thickness" value="<%= record?.thickness %>" /><br />
   
         <label for="product-type">Product Type (Plate or Pipe):</label>
@@ -185,9 +185,8 @@ button {
           name="base_metal_p_no"
           value="<%= record?.base_metal_p_no %>"
         /><br />
-  
-      @@ -141,16 +144,16 @@
-        >
+        <label for="filler-metal-spec">Filler Metal or electrode specification(s) (SFA):</label>
+     
         <input
           type="text"
           id="sfa"
@@ -202,16 +201,13 @@ button {
           name="s"
           value="<%= record?.s %>"
         /><br />
-  
-      @@ -159,21 +162,21 @@
-        >
+        <label for="filler-metal-addition">Filler Metal addition/Deletion (GTAW/PAW):</label>
         <input
           type="text"
           id="gtaw_paw"
           name="gtaw_paw"
           value="<%= record?.gtaw_paw %>"
         /><br />
-  
         <label for="deposit_thickness">Deposit thickness for each process:</label>
         <input
           type="text"
@@ -225,7 +221,7 @@ button {
   
         <label for="vertical-progression">Vertical Progression(s):</label>
         <input
-      @@ -183,17 +186,17 @@
+  
           value="<%= record?.vertical_progression %>"
         /><br />
   
@@ -251,7 +247,8 @@ button {
   
         <label for="voltage">Voltage:</label>
         <input type="text" id="voltage" name="voltage" value="<%= record?.voltage %>"/><br />
-      @@ -213,58 +216,58 @@
+    
+        <label for="travel-speed">Travel Speed:</label>
         <input type="text" id="current" name="current" value="<%= record?.current %>" /><br />
   
         <label for="travel-speed">Travel Speed:</label>

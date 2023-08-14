@@ -6,10 +6,6 @@ const Certificate = require('../models/certificateModel')
 var router = express.Router();
 
 
-const getAllReports = async () => {
-  return await Report.find().exec()
-}
-
 router.get('/', function (req, res, next) {
   res.render("authentication")
 });
@@ -34,10 +30,16 @@ router.get('/supervisor', async (req, res) => {
   res.render('Supervisor',{"cardData" : cardData, "reportData": reportData, "certificateData": certificateData})
 })
 
+
+router.get('/inspector',async(req,res)=>{
+  const reportData = await Report.find().exec()
+  res.render('inspector', {"reportData": reportData });
+})
+
 router.post('/auth', async function (req, res) {
   console.log(req.body.id);
   if (req.body.user_role === 'supervisor') {
-    const user = await User.findOne({ 'userId': req.body.id, 'password': req.body.password });
+    const user =  User.findOne({ 'userId': req.body.id, 'password': req.body.password });
     console.log(user);
     if (user) {
       console.log('User Found ');
@@ -51,8 +53,7 @@ router.post('/auth', async function (req, res) {
     console.log(user);
     if (user) {
       console.log('User Found ');
-      const reportData = await Report.find().exec()
-      res.render('inspector', {"reportData": reportData });
+      res.redirect('/inspector')
     } else {
       console.log('Not Found ');
     }
