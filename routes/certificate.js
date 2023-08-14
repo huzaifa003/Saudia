@@ -48,7 +48,7 @@ router.post("/insert", async (req,res)=>{
     const cerf = await Certificate.create(req.body);
     const record = cerf
     // res.send(cerf);
-    res.render("viewCertificate",{record});
+    res.redirect("/certificate/view/" + body['certificateNo']);
 
 })
 

@@ -41,7 +41,7 @@ h6{font-size: 11px;}
     </thead>
 
   </table>
-  <table style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
+  <table id="tab" style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tbody>
       <thead>
         <tr>
@@ -314,5 +314,35 @@ h6{font-size: 11px;}
 <a class="hide-in-print" href="/Supervisor"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">Back to Home</a>
 
 </body>
+
+<script>
+  let count = 0;
+  function change(params) {
+    count++;
+    if (count > 2){
+      return;
+    }
+
+    let table = document.getElementById("tab");
+    table.innerHTML += ` <tr>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
+          <input disabled type="text" value="<%=record.attr1key%>" name="attr1key"> 
+        </td>
+        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr1value %>" type="text" name="attr1value" id=""></td>
+      </tr>
+
+      <tr>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
+          <input disabled type="text" value="<%=record.attr2key%>" name="attr1key"> 
+        </td>
+        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr2value %>" type="text" name="attr1value" id=""></td>
+      </tr>
+
+      <tr>`
+        
+  }
+
+  change(1);
+</script>
 
 </html>

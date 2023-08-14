@@ -24,7 +24,7 @@
 
 <body>
     <form action="/certificate/update/<%=record.certificateNo%>" method="post" enctype="multipart/form-data">
-  <table style="margin: auto; width: 100%;">
+  <table  style="margin: auto; width: 100%;">
     <thead>
       <th><img style="width:200px" src="/images/AtecoLogoTransparent.png" alt=""></th>
       <th>
@@ -42,7 +42,7 @@
     </thead>
 
   </table>
-  <table style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
+  <table id="tab" style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tbody>
       <thead>
         <tr>
@@ -324,5 +324,35 @@ UPLOAD THE FILE IN JPG
 <input value="Update" class="hide-in-print" type="submit"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">
 </form>
 </body>
+
+<script>
+  let count = 0;
+  function change(params) {
+    count++;
+    if (count > 2){
+      return;
+    }
+
+    let table = document.getElementById("tab");
+    table.innerHTML += ` <tr>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
+          <input  type="text" value="<%=record.attr1key%>" name="attr1key"> 
+        </td>
+        <td style="text-align: left; border: 1px solid black;"> <input  value="<%=record.attr1value %>" type="text" name="attr1value" id=""></td>
+      </tr>
+
+      <tr>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
+          <input  type="text" value="<%=record.attr2key%>" name="attr2key"> 
+        </td>
+        <td style="text-align: left; border: 1px solid black;"> <input  value="<%=record.attr2value %>" type="text" name="attr2value" id=""></td>
+      </tr>
+
+      <tr>`
+        
+  }
+
+  change(1);
+  </script>
 
 </html>

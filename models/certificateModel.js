@@ -90,6 +90,14 @@ const certificateModel = mongoose.Schema({
     mechTestChecked: String,
     mechTestReportNo: String,
     mechTestResults: String,
+
+    attr1key: String,
+    attr1value: String,
+
+    attr2key: String,
+    attr2value: String,
+
+    
 })
 
 const Certificate = mongoose.model("Certificate", certificateModel);
