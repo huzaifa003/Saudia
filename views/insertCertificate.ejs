@@ -11,7 +11,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 12px;
   }
-h6{font-size: 11px;}
+
   thead {
     background-color: rgb(241, 241, 241);
   }
@@ -23,9 +23,10 @@ h6{font-size: 11px;}
 </style>
 
 <body>
-  <table border style="margin: auto; width: 100%;">
+    <form action="/certificate/insert" method="post" enctype="multipart/form-data">
+  <table style="margin: auto; width: 100%;">
     <thead>
-      <th><img style="width:200px" src="/images/logo.png" alt=""></th>
+      <th><img style="width:200px" src="/images/AtecoLogoTransparent.png" alt=""></th>
       <th>
         <div>
           <h2
@@ -33,11 +34,11 @@ h6{font-size: 11px;}
             Welder / Welder operator performance Qualification Record</h2>
           <h3
             style=" font-size: medium; font-weight: bold; color: black; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-             <%= record.clientName %></h3>
+           <input type="text" name="clientName" id=""></h3>
         </div>
       </th>
-      <th><img style="width:100px" src="/certificates/<%= record.certificateNo %>/profile.jpg" alt=""></th>
-      <th><img style="width:150px" src="/certificates/<%= record.certificateNo %>/iqama.jpg" alt=""></th>
+      <!-- <th><img style="width:100px" src="/images/profilepic.jfif" alt=""></th> -->
+      <th><img style="width:150px" src="/images/iqama.jpg" alt=""></th>
     </thead>
 
   </table>
@@ -52,33 +53,33 @@ h6{font-size: 11px;}
       </thead>
       <tr>
         <td style="border: 1px solid black; font-weight: bold;">Welder's/Welder Operator's Name</td>
-        <td style="border: 1px solid black;"><%= record.welderName %></td>
+        <td style="border: 1px solid black;"><input type="text" name="welderName" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Identification of WPS/PQR</td>
-        <td style="border: 1px solid black;"><%= record.identification_wps %></td>
+        <td style="border: 1px solid black;"><input type="text" name="identification_wps" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Iqama / ID No</td>
-        <td style="border: 1px solid black;"><%=record.iqamaNo%></td>
+        <td style="border: 1px solid black;"><input type="text" name="iqamaNo" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Qualification Standard</td>
-        <td style="border: 1px solid black;"><%=record.identification_wps %></td>
+        <td style="border: 1px solid black;"><input type="text" name="qualifcationStandard" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Welder ID No</td>
-        <td style="border: 1px solid black;"><%= record.welderId %></td>
+        <td style="border: 1px solid black;"><input type="text" name="welderId" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Base Metal Specification</td>
-        <td style="border: 1px solid black;"><%=record.baseMetalSpecs %></td>
+        <td style="border: 1px solid black;"><input type="text" name="baseMetalSpecs" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">WTA Ref No</td>
-        <td style="border: 1px solid black;"><%=record.wtaRef %></td>
+        <td style="border: 1px solid black;"><input type="text" name="wtaRef" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Joint Type</td>
-        <td style="border: 1px solid black;"><%=record.jointType %></td>
+        <td style="border: 1px solid black;"><input type="text" name="jointType" id=""></td>
       </tr>
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Date of Test</td>
-        <td style="border: 1px solid black;"><%=record.date_of_test %></td>
+        <td style="border: 1px solid black;"><input type="text" name="date_of_test" id=""></td>
         <td style="border: 1px solid black;font-weight: bold;">Wield Type</td>
-        <td style="border: 1px solid black;"><%=record.weldType %></td>
+        <td style="border: 1px solid black;"><input type="text" name="weldType" id=""></td>
       </tr>
     </tbody>
     <thead>
@@ -92,107 +93,107 @@ h6{font-size: 11px;}
     <tbody style="text-align: center">
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder Process(es)</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.welderProcessActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.welderProcessRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="welderProcessActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="welderProcessRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Types of Welder (manual/semi auto)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.typesOfWeldersActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typesOfWeldersRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="typesOfWeldersActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="typesOfWeldersRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Bracking (With/without)</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.brackingActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.brackingRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="brackingActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="brackingRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Types of wield</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.typesOfWieldActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typesOfWieldRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="typesOfWieldActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="typesOfWieldRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Product Types(Plate or Pipe)</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.productTypeActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.productTypeRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="productTypeActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="productTypeRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Diameter of Pipe</td>
-        <td style="text-align: left; border: 1px solid black;;"><%=record.diameterOfPipeActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.diameterOfPipeRange %></td>
+        <td style="text-align: left; border: 1px solid black;;"><input type="text" name="diameterOfPipeActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="diameterOfPipeRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Base Metal P Number to P Number</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.baseMetalp_pActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.baseMetalp_pRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="baseMetalp_pActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="baseMetalp_pRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Filler Metal or electrode sopecification
         </td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.fillerMetalActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.fillerMetalRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="fillerMetalActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="fillerMetalRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Filler Meta F-Number(S)</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.fillerMetalFNoActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.fillerMetalFNoRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="fillerMetalFNoActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="fillerMetalFNoRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Filer Metal addition/Deletion (GTAW/PAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.fillerMetalAdditionActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.fillerMetalAdditionRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="fillerMetalAdditionActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="fillerMetalAdditionRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Consumable Insert (GTAW or PAW)</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.consumableInsertActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.consumableInsertRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="consumableInsertActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="consumableInsertRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black; font-weight: bold;">
           Deposit thickness for each process
         </td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.depositeThicknessActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.depositeThicknessRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="depositeThicknessActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="depositeThicknessRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder position</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.welderPositionActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.welderPositionRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="welderPositionActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="welderPositionRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Vertical Progression</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.verticalProgressionActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.verticalProgressionRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="verticalProgressionActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="verticalProgressionRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Type of Fuel Gas(OFW)</td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.typesOfFuelGasActual%></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typesOfFuelGasRange%></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="typesOfFuelGasActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="typesOfFuelGasRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Insert gas backing(GTAW,PAW,GMAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.insertGasBackingActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.insertGasBackingRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="insertGasBackingActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="insertGasBackingRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Transfer Mode( spary,globulat or pulse to sort circuit-GMAW)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.transferModelActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.transferModelRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="transferModelActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="transferModelRange" id=""></td>
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           Current Type/Polarity(AC,DCEP,DCEN)
         </td>
-        <td style="text-align: left; border: 1px solid black;"><%=record.currentTypePolarityActual %></td>
-        <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.currentTypePolarityRange %></td>
+        <td style="text-align: left; border: 1px solid black;"><input type="text" name="currentTypePolarityActual" id=""></td>
+        <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="currentTypePolarityRange" id=""></td>
       </tr>
     </tbody>
     <thead>
@@ -216,43 +217,36 @@ h6{font-size: 11px;}
         </td>
         <td style="text-align: center;">
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <% if (record.virtualInspectorChecked === "on") { %>
-            <input type="checkbox" disabled checked name="" id="" >
-            <% } else { %>
-              <input disabled type="checkbox" name="" id="" >
-              <% } %>
-            <h6 ><%= record.virtualInspectorReportNo%></h6>
+            <input type="checkbox" name="virtualInspectorChecked" id="" >   
+            <input type="text" name="virtualInspectorReportNo" id="">
           </div>
+          <br>
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <% if (record.radiographyChecked === "on") { %>
-              <input type="checkbox" disabled checked name="" id="" >
-              <% } else { %>
-                <input disabled type="checkbox" name="" id="" >
-                <% } %>
-            <h6><%= record.radiographyReportNo%></h6>
+            <input type="checkbox" name="radiographyChecked" id="" >
+            <input type="text" name="radiographyReportNo" id="">
           </div>
+          <br>
           <div style="display: flex; gap: 10px; justify-content: center;">
-            <% if (record.mechTestChecked === "on") { %>
-              <input disabled type="checkbox" checked name="" id="" >
-              <% } else { %>
-                <input disabled type="checkbox" name="" id="" >
-                <% } %>
-            <h6><%= record.mechTestReportNo%></h6>
+            <input type="checkbox" name="mechTestChecked" id="" >
+            <input type="text" name="mechTestReportNo" id="">
           </div>
 
         </td>
         <td>
-          <div style="display: flex; gap: 10px; justify-content: center;">
+            <br>
+          <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <h6><%= record.virtualInspectorResults %></h6>
+            <input type="text" name="virtualInspectorResults" id="">
           </div>
-          <div style="display: flex; gap: 10px; justify-content: center;">
+          <br>
+          <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <h6><%= record.radiographyResults%></h6>
+            <input type="text" name="radiographyResults" id="">
           </div>
-          <div style="display: flex; gap: 10px; justify-content: center;">
+          <br>
+          <div style="display: flex; gap: 10px; justify-content: end;">
           
-            <h6><%= record.mechTestResults%></h6>
+            <input type="text" name="mechTestResults" id="">
           </div>
         </td>
       </tr>
@@ -274,12 +268,12 @@ h6{font-size: 11px;}
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                      
                         <span style="font-weight: bold;">Testing Witnessed / Welder Inspector</span>
-                        <span style="text-decoration: underline;"><%=record.welderInspector%></span>
+                        <span style="text-decoration: underline;">   <input type="text" name="welderInspector" id=""></span>
                     </div>
               
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <span style="font-weight: bold;">Test Supervisor / Technical Manager</span>
-                        <span style="text-decoration: underline;"><%= record.supervisorName%></span>
+                        <span style="text-decoration: underline;">   <input type="text" name="supervisorName" id=""></span>
                     </div>
                   
                 </div>
@@ -288,7 +282,7 @@ h6{font-size: 11px;}
                 <div style="display: flex; flex-direction: column; gap: 20px; ">
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <span style="font-weight: bold; ">Client Name:</span>
-                        <span style="text-decoration: underline;"><%= record.clientName %></span>
+                        <span style="text-decoration: underline;">   </span>
                     </div>
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <span style="font-weight: bold;">Client Signature:</span>
@@ -297,7 +291,7 @@ h6{font-size: 11px;}
 
                     <div style="display: flex; justify-content: end; align-items: center; background-color: rgb(223, 223, 223); width: 100%;">
                       <p >To verify the information about the certificate. Please scan the QR code using any QR scan app</p>
-                      <img width="90px" src="/certificates/<%= record.certificateNo%>/qrcode.png" alt="">
+                      <img width="90px" src="/images/qrcode.png" alt="">
                      
                     </div>
           
@@ -310,9 +304,13 @@ h6{font-size: 11px;}
     </tbody>
 </table>
 
-<a class="hide-in-print" href="#" onclick="window.print(); return false;" style="text-decoration: none; background-color: red; color: white; padding: 2px;">Download PDF</a>
-<a class="hide-in-print" href="/Supervisor"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">Back to Home</a>
+UPLOAD THE IQAMA IN JPG
+<input type="file" id="iqama" name="iqama" value="Upload Iqama in JPG"/>
 
+UPLOAD THE FILE IN JPG
+<input type="file" id="profile" name = "profile" value="Upload Profile in JPG"/> 
+<input class="hide-in-print" type="submit"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">
+</form>
 </body>
 
 </html>
