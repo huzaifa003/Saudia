@@ -12,6 +12,7 @@ const certificateModel = mongoose.Schema({
     clientName: String,
     supervisorName: String,
     welderName: String,
+    welderInspector:String,
     identification_wps: String,
     iqamaNo: String,
     qualifcationStandard: String,
