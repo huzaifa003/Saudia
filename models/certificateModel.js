@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const certificateModel = mongoose.Schema({
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        get: function(date) {
+            return date.toLocaleDateString('en-US');
+        }
     },
     count: Number,
     certificateNo: String,

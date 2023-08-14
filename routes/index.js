@@ -6,10 +6,6 @@ const Certificate = require('../models/certificateModel')
 var router = express.Router();
 
 
-const getAllReports = async () => {
-  return await Report.find().exec()
-}
-
 router.get('/', function (req, res, next) {
   res.render("authentication")
 });
