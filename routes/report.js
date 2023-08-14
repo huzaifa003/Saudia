@@ -79,46 +79,37 @@ router.post("/edit/:doc_id", async(req,res)=>{
     res.status(404).json({"error": "Not found"});
 
 })
-router.post("/update", async(req,res)=>{
-    let body = req.body;
-    let record = await Report.findOne({"doc_id": body.doc_id});
-    console.log(body);
-    if (record){
-        // record = body;
-        // console.log(record);
-        // const newRecord = new Report(record)
-        // await newRecord.save()
-        
-        const de = await Report.findByIdAndDelete(record._id);
-        console.log(de);
-        // body._id = record._id;
+router.post("/update/:doc_id", async (req, res) => {
+    try {
+        let doc_id= req.params.doc_id
+        const body = req.body;
+        const existingRecord = await Report.findOne({ "doc_id": doc_id });
 
-        // const newRecord = await new Report(body);
-        // newRecord.save();
-        // res.status(200).json({"status": "Updated Successfully", "updated": record});
-
-        const report = await Report.create(req.body);
-        res.status(200).json({"status": "Updated Successfully", "updated": report});
+        if (existingRecord) {
+            // Update the existing record's doc_details
+            existingRecord.doc_details = body.doc_details;
+            await existingRecord.save();
+            res.status(200).json(existingRecord);
+        } else {
+            // Create a new report if the record doesn't exist
+            const newReport = await Report.create(req.body);
+            res.status(200).json(newReport);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
-
-    else{
-        const report = await Report.create(req.body);
-        res.status(200).json(report);
-    }
-})
-
+});
 
 router.post("/view/:doc_id",async(req,res)=>{
     let doc_id = req.params.doc_id;
     console.log(doc_id);
- 
-    const record = await Report.find({ doc_id: { $all: doc_id } })
+    const record = await Report.findOne({ "doc_id": doc_id });
     console.log(record);
     if (record){
-        res.status(200).render("ViewReport",{record:record});
+        res.status(200).render("ViewReport",{record:record,'doc_id':doc_id});
         return;
     }
-
     res.status(404).json({"error": "Not found"});
     
 })
