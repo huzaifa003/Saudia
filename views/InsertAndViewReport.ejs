@@ -63,9 +63,9 @@
               </tr>
             </thead>
             <tbody>
-                <% record.map((rec) => { %>
+                <% record.map((rec,index) => { %>
                     <tr>
-                        <td><%= rec.serial_no %></td>
+                        <td><%= index+1 %></td>
                         <td><%= rec.welder_id %></td>
                         <td><%= rec.iqama_no %></td>
                         <td><%= rec.test_coupon_id %></td>

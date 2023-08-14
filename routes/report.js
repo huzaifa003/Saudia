@@ -39,6 +39,7 @@ router.post("/insert",async(req,res)=>{
     }
 })
 
+
 router.post('/addRows/:id',async(req,res)=>{
     const body = req.body;
     // body['serial_no'] = Report.find().count()+1;
@@ -65,7 +66,7 @@ router.post('/addRows/:id',async(req,res)=>{
         }
         console.log(record);
         if (record){
-            res.status(200).render("InsertAndViewReport",{"id" : no, record: record});
+            res.status(200).render("InsertAndViewReport",{"id" : no});
             return;
         }
         
@@ -73,6 +74,7 @@ router.post('/addRows/:id',async(req,res)=>{
         console.log(error);
         res.status(500).json({"message" : error.message});
     }
+    
 })
 
 router.post("/edit/:doc_id", async(req,res)=>{
