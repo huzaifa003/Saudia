@@ -4,54 +4,43 @@ var mongoose = require('mongoose');
 const Report = require('../models/reportModel');
 
 var router = express.Router();
+const generateRandomNumber = () => {
+    return Math.floor(Math.random() * 100000000) + 1;
+};
 
-router.get("/",async (req,res)=>{
-    const last_one = await Report.findOne().sort({_id : -1}).exec();
-    let no = 1;
-    if (last_one){
-        console.log(last_one)
-        no = last_one.serial_no + 1;
-    }
-    res.render('InsertReport', {id: no})
-})
+router.get("/", async (req, res) => {
+    
 
+        res.render('InsertReport');
+     
+});
 router.post("/insert",async(req,res)=>{
-    const body = req.body;
-    // body['serial_no'] = Report.find().count()+1;
-    // body['welder_id'] = 
-    const last_one = await Report.findOne().sort({_id : -1}).exec();
-    let no = 1;
-    if (last_one){
-        console.log(last_one)
-        no = last_one.serial_no + 1;
-    }
+    try {
+        const data = req.body;
+        let unique = false;
+        let randomNo;
 
-    console.log(no);
-    body['serial_no'] = no;
-    // body['welder_id'] = "w-" + String(no);
-    body['doc_id'] = "r-" + String(no);
-        try {
-        const report = await Report.create(req.body);
-        res.status(200).render(report);
+        while (!unique) {
+            randomNo = generateRandomNumber();
+            const existingReport = await Report.findOne({ serial_no: randomNo }).exec();
+            
+            if (!existingReport) {
+                unique = true;
+            }
+        }
+       const repData= await Report.insertMany({'doc_details':data , 'doc_id':String(randomNo) })        
+       // res.json({ success: true, message: 'Data saved successfully' });
+        res.send(no)
+        
     } catch (error) {
-        console.log(error);
-        res.status(500).json({"message" : error.message});
+        res.status(500).json({ success: false, message: error.message });
     }
 })
 
 
 router.post('/addRows/:id',async(req,res)=>{
     const body = req.body;
-    // body['serial_no'] = Report.find().count()+1;
-    // body['welder_id'] = 
-    // const last_one = await Report.findOne().sort({_id : -1}).exec();
-    // let no = 1;
-    // if (last_one){
-    //     console.log(last_one)
-    //     no = last_one.serial_no + 1;
-    // }
 
-    // console.log(no);
 
     no = req.params.id
     body['serial_no'] = no;
