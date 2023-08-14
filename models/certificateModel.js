@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const certificateModel = mongoose.Schema({
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
     count: Number,
     certificateNo: String,
     iqamaPic: String,

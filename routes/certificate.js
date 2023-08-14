@@ -43,7 +43,7 @@ router.post("/insert", async (req,res)=>{
         console.log(err);
     })
 
-    await qrcode.toFile("./uploads/certificates/" + body['certificateNo'] + "/qrcode.png","http://localhost:4200/certificate/" + body['certificateNo']);
+    await qrcode.toFile("./uploads/certificates/" + body['certificateNo'] + "/qrcode.png","http://localhost:4200/certificate/view/" + body['certificateNo']);
 
     const cerf = await Certificate.create(req.body);
 
@@ -67,7 +67,7 @@ router.get("/view/:certificateNo", async(req,res)=>{
 
 })
 
-router.get("/edit/:certificateNo",async(req,res)=>{
+router.post("/edit/:certificateNo",async(req,res)=>{
     const record = await Certificate.findOne({"certificateNo": req.params.certificateNo}).exec();
     
     if (record){

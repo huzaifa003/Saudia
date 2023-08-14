@@ -34,7 +34,7 @@
             Welder / Welder operator performance Qualification Record</h2>
           <h3
             style=" font-size: medium; font-weight: bold; color: black; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-           <input value="" type="text" name="" id=""></h3>
+           <input value="<%= record.clientName %>" type="text" name="clientName" id=""></h3>
         </div>
       </th>
       <th><img style="width:100px" src="/certificates/<%=record.certificateNo %>/profile.jpg" alt=""></th>
@@ -222,7 +222,7 @@
                 <% } else { %>
                   <input type="checkbox" name="virtualInspectorChecked" id="virtualInspectorChecked" >
                   <% } %> 
-            <input value="<%=record.virtualInpsectorReportNo %>" type="text" name="virtualInpsectorReportNo" id="">
+            <input value="<%=record.virtualInspectorReportNo %>" type="text" name="virtualInspectorReportNo" id="">
           </div>
           <br>
           <div style="display: flex; gap: 10px; justify-content: center;">
@@ -280,12 +280,12 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                      
                         <span style="font-weight: bold;">Testing Witnessed / Welder Inspector</span>
-                        <span style="text-decoration: underline;">   <input type="text" name="" id=""></span>
+                        <span style="text-decoration: underline;">   <input type="text" name="welderName" value="<%= record.welderName %>" id=""></span>
                     </div>
               
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <span style="font-weight: bold;">Test Supervisor / Technical Manager</span>
-                        <span style="text-decoration: underline;">   <input type="text" name="" id=""></span>
+                        <span style="text-decoration: underline;">   <input type="text" name="supervisorName" id="<%= record.supervisorName %>"></span>
                     </div>
                   
                 </div>
@@ -294,7 +294,7 @@
                 <div style="display: flex; flex-direction: column; gap: 20px; ">
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <span style="font-weight: bold; ">Client Name:</span>
-                        <span style="text-decoration: underline;">   <input type="text" name="" id=""></span>
+                        <span style="text-decoration: underline;">   <input type="text" name="clientName" id="" value="<%=record.clientName%>"></span>
                     </div>
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <span style="font-weight: bold;">Client Signature:</span>
@@ -317,7 +317,7 @@
 </table>
 
 UPLOAD THE IQAMA IN JPG
-<input type="file" id="iqama" name="iqama" />
+<input type="file" id="iqama" name="iqama"  />
 
 UPLOAD THE FILE IN JPG
 <input type="file" id="profile" name = "profile" /> 

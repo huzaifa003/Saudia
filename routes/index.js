@@ -37,7 +37,7 @@ router.get('/supervisor', async (req, res) => {
 router.post('/auth', async function (req, res) {
   console.log(req.body.id);
   if (req.body.user_role === 'supervisor') {
-    const user = await User.findOne({ 'userId': req.body.id, 'password': req.body.password });
+    const user =  User.findOne({ 'userId': req.body.id, 'password': req.body.password });
     console.log(user);
     if (user) {
       console.log('User Found ');
