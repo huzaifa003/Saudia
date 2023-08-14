@@ -51,9 +51,9 @@ router.post("/insert", async (req, res) => {
     qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "localhost:4200/card/view/" + body['card_no']);
     body['qr'] = body['card_no'] + ".png"
     const card = await Card.create(body);
-    const record = 
+    const record = card
     res.render("viewCard", { 'record': record })
-    res.send(card);
+    // res.send(card);
 })
 
 router.get("/view/:card_no", async (req, res) => {
