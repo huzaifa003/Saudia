@@ -95,8 +95,7 @@
                                 <th>Serial No</th>
                                 <th>Date</th>
                                 <th>Wielder ID</th>
-                                <th>Wielder Name</th>
-                                <th>Project</th>
+                               
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -104,10 +103,9 @@
                             <% reportData.forEach(function(report, index){ %>
                                 <tr>
                                     <td><%= index + 1 %></td>
-                                    <td><%= report.date_of_inspection %></td>
-                                    <td><%= report.welder_id %></td>
-                                    <td><%= report.welder_name %></td>
-                                    <td><%= report.project_details %></td>
+                                    <td><%= report.createdAt %></td>
+                                    <td><%= report.doc_id %></td>
+                                   
                                     <td style="display: flex; align-items: stretch;">
                                         <form action="/report/edit/<%= report.doc_id %>" method="POST">
                                         <input id="" type="submit" value="Edit"></input> 
