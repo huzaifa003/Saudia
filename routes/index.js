@@ -65,6 +65,7 @@ router.post('/auth', async function (req, res) {
       res.redirect('/supervisor')
     } else {
       console.log('Not Found ');
+      res.redirect('/')
     }
   }
   if (req.body.user_role === 'inspector') {
@@ -76,6 +77,7 @@ router.post('/auth', async function (req, res) {
       res.redirect('/inspector')
     } else {
       console.log('Not Found ');
+      res.redirect('/')
     }
   }
 });
