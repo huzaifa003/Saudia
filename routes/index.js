@@ -3,7 +3,7 @@ const User = require('../models/userModel')
 const Report = require('../models/reportModel')
 const Card = require('../models/cardModel')
 const Certificate = require('../models/certificateModel')
-var session = require('express-session')
+
 var router = express.Router();
 
 router.use(session({
@@ -16,15 +16,7 @@ router.get('/', function (req, res, next) {
   res.render("authentication")
 });
 router.get('/supervisor', async (req, res) => {
-  if (req.session == undefined) {
-    res.redirect("/")
-    return
-  }
-
-  if (req.session.user !== "supervisor") {
-    res.redirect("/")
-    return;
-  }
+ 
   const cardData = await Card.find().exec()
   const reportData = await Report.find().exec()
   const certificateData = await Certificate.find().exec()
@@ -47,14 +39,8 @@ router.get('/supervisor', async (req, res) => {
 
 
 router.get('/inspector', async (req, res) => {
-  if (req.session == undefined) {
-    res.redirect("/")
-    return
-  }
-  if (req.session.user !== "inspector") {
-    res.redirect("/")
-    return
-  }
+ 
+ 
   const reportData = await Report.find().exec()
   res.render('inspector', { "reportData": reportData });
 })
