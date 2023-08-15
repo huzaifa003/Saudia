@@ -3,6 +3,7 @@ const User = require('../models/userModel')
 const Report = require('../models/reportModel')
 const Card = require('../models/cardModel')
 const Certificate = require('../models/certificateModel')
+const session = require('express-session')
 
 var router = express.Router();
 
@@ -16,7 +17,8 @@ router.get('/', function (req, res, next) {
   res.render("authentication")
 });
 router.get('/supervisor', async (req, res) => {
- 
+  if (req.session.user==='supervisor') {
+   
   const cardData = await Card.find().exec()
   const reportData = await Report.find().exec()
   const certificateData = await Certificate.find().exec()
@@ -35,14 +37,20 @@ router.get('/supervisor', async (req, res) => {
 
 
   res.render('Supervisor', { "cardData": cardData, "reportData": reportData, "certificateData": certificateData })
+   
+}else{
+  res.render('/')
+}
 })
 
 
 router.get('/inspector', async (req, res) => {
- 
- 
+if (req.session.user==='inspector') {
   const reportData = await Report.find().exec()
   res.render('inspector', { "reportData": reportData });
+}else{
+  res.redirect('/')
+}
 })
 
 router.post('/auth', async function (req, res) {
@@ -53,6 +61,7 @@ router.post('/auth', async function (req, res) {
     if (user) {
       console.log('User Found ');
       req.session.user = "supervisor";
+      console.log("Session : "+req.session.user);
       res.redirect('/supervisor')
     } else {
       console.log('Not Found ');

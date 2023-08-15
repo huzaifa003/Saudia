@@ -41,7 +41,7 @@ app.use('/certificate',certificateRouter)
 
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'keyboardcat',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: true }

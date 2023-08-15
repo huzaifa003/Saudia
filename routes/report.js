@@ -129,7 +129,12 @@ router.post("/update/:doc_id", async (req, res) => {
        existingRecord.doc_details = convertedData.doc_details;
         await existingRecord.save();
         // res.status(200).json(existingRecord);
-        res.redirect('/inspector')
+        if (req.session.user==='inspector') {
+          res.redirect('/inspector')
+        }else{
+          res.redirect('/supervisor')
+        }
+       
       } else {
         // Create a new report if the record doesn't exist
        
@@ -148,7 +153,7 @@ router.post("/view/:doc_id", async (req, res) => {
   const record = await Report.findOne({ doc_id: doc_id });
   console.log(record);
   if (record) {
-    res.status(200).render("ViewReport", { record: record, doc_id: doc_id });
+    res.status(200).render("ViewReport", { record: record, doc_id: doc_id , 'session':req.session.user});
     return;
   }
   res.status(404).json({ error: "Not found" });
