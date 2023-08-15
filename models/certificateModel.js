@@ -94,9 +94,11 @@ const certificateModel = mongoose.Schema({
 
     attr1key: String,
     attr1value: String,
+    attr1range: String,
 
     attr2key: String,
     attr2value: String,
+    attr2range: String
 
     
 })
