@@ -204,6 +204,8 @@
         
       </tr>
       <tr>
+<table style="width: 100%;" border="">
+
 
     </tbody>
     <thead>
@@ -244,17 +246,17 @@
         </td>
         <td>
             <br>
-          <div style="display: flex; gap: 10px; justify-content: end;">
+          <div style="display: flex; gap: 10px; justify-content: center;">
           
             <input type="text" name="virtualInspectorResults" id="">
           </div>
           <br>
-          <div style="display: flex; gap: 10px; justify-content: end;">
+          <div style="display: flex; gap: 10px; justify-content: center;">
           
             <input type="text" name="radiographyResults" id="">
           </div>
           <br>
-          <div style="display: flex; gap: 10px; justify-content: end;">
+          <div style="display: flex; gap: 10px; justify-content: center;">
           
             <input type="text" name="mechTestResults" id="">
           </div>
@@ -262,6 +264,7 @@
       </tr>
 
     </tbody>
+
     <thead>
       <tr>
         <th colspan="4">    <p style="font-size: 11px;">We, the undersigned, certify that the statements in the record are correct and that the test coupons were welded and tested in accordance with the requirements of <span style="color: rgb(0, 131, 254); font-weight: bold;">ASME SEC-EE <input type="text" name="year" id=""> Edition</span>.</p></th>
@@ -330,11 +333,13 @@ UPLOAD THE FILE IN JPG
     if (count > 2){
       return;
     }
+    //  i added the new input field do adust the db schema according to it 
     let table = document.getElementById("tab");
     table.innerHTML += ` <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           <input type="text" placeholder= "Enter The Attribute Name" name="attr${count}key"> 
         </td>
+        <td style="text-align: left; border: 1px solid black;"> <input placeholder="Enter The Value" type="text" name="attr${count}value" id=""></td>
         <td style="text-align: left; border: 1px solid black;"> <input placeholder="Enter The Value" type="text" name="attr${count}value" id=""></td>
       </tr>
       <tr>`
