@@ -6,6 +6,11 @@ const Certificate = require('../models/certificateModel')
 var session = require('express-session')
 var router = express.Router();
 
+router.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true,
+}));
 
 router.get('/', function (req, res, next) {
   res.render("authentication")
