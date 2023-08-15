@@ -67,18 +67,18 @@ button {
   <body>
     <div style="width: fit-content">
       <div style="border: 2px black solid; margin: 2px">
-        <div style="border: 2px black solid" class="flex-between">
-          <div class="logo"></div>
+        <div style="border: 2px black solid;display: flex; justify-content: space-evenly; align-items: center;" >
+          <div class="logo"> <img class = "logo" src="/images/AtecoLogoTransparent.png"> </div>
           <p style="text-align: center">
-            Welder Qualification Test Record Sheet | DOC NO # :<span><%= record?.doc_id %></span>
+            Welder Qualification Test Record Sheet 
           </p>
-          <img class = "logo" src="https://i.ibb.co/jgGwH67/logo.png">
+        <p>ATECO-WTQ_DOC# __</p>
+        
         </div>
         <div>
           <table>
             <thead>
               <tr>
-              
                 <th>Welder ID</th>
                 <th>Iqama Number</th>
                 <th>Test Coupon ID</th>
@@ -99,9 +99,7 @@ button {
                 <th>Vertical Progression (s)</th>
                 <th>Type of Fuel Gas (OFW)</th>
                 <th>Inert gas backing (GTAW, PAW, GMAW)</th>
-                <th>
-                  Transfer Mode (spray, globular, or pulse to sort circuit-GMAW)
-                </th>
+                <th>Transfer Mode (spray, globular, or pulse to sort circuit-GMAW)</th>
                 <th>Current Type I Polarity (AC. DCEP, DCEN)</th>
                 <th>Voltage</th>
                 <th>Current</th>
@@ -109,201 +107,54 @@ button {
                 <th>InterPass Temperature</th>
                 <th>Pre Heat (If Applicable)</th>
                 <th>Post Weld Heat Treatment (If Applicable)</th>
-                <th>Action</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <form action="/report/update/<%= record.doc_id %>" method="post">
+            <tbody id="data-table-body">
+              <% record.doc_details.map((data,index)=>{ %>
+              <tr>
+                
+            <td> <input type="text" id="welder-id" name="welder_id" value="<%= data.welder_id %>" /></td>
+            <td><input type="text" id="iqama-number" name="iqama_no" value="<%= data.iqama_no %>"/> </td> 
+            <td><input type="text" id="test-coupon-id" name="test_coupon_id" value="<%= data.test_coupon_id %>" /></td> 
+            <td> <input type="text" id="date-of-inspection" name="date_of_inspection" value="<%= data.date_of_inspection %>"/></td>
+            <td><input type="text" id="welding-process" name="welding_process" value="<%= data.welding_process %>"/></td>
+            <td><input type="text" id="type-of-welding" name="type_of_welding" value="<%= data.type_of_welding %>"/></td>
+            <td> <input type="text" id="backing" name="backing" value="<%= data.backing %>" /></td>
+            <td><input type="text"id="type-of-weld-joint" name="typeof_weld" value="<%= data.typeof_weld %>"/> </td> 
+            <td><input type="text" id="thickness" name="thickness" value="<%= data.thickness %>"/></td>
+            <td><input type="text" id="product-type" name="product_type" value="<%= data.product_type%>"/></td>
+            <td> <input type="text" id="diameter-of-pipe" name="diameter_of_pipe" value="<%= data.diameter_of_pipe %>" /></td>
+            <td> <input type="text" id="base-metal-p-number" name="base_metal_p_number" value="<%= data.base_metal_p_number %>"/></td>
+            <td> <input type="text" id="filler-metal-spec" name="sfa" value="<%= data.sfa%>"/></td>
+            <td> <input type="text" id="filler-metal-f-number" name="s" value="<%= data.s%>"/></td>
+            <td> <input type="text" id="filler-metal-addition" name="gtaw_paw" value="<%= data.gtaw_paw %>"/></td>
+            <td> <input type="text" id="deposit-thickness" name="deposit_thickness" value="<%= data.deposit_thickness %>"/></td>
+            <td><input type="text" id="welding-position" name="welding_position" value="<%= data.welding_position %>"/></td>
+            <td> <input type="text"  id="vertical-progression" name="vertical_progression" value="<%= data.vertical_progression %>" /></td>
+            <td> <input type="text" id="type-of-fuel-gas" name="ofw" value="<%= data.ofw %>"/></td>
+            <td>  <input type="text" id="inert-gas-backing" name="inert_gas" value="<%= data.inert_gas %>"/></td>
+            <td> <input type="text" id="transfer-mode" name="transfer_mode" value="<%= data.transfer_mode %>" /></td>
+            <td> <input type="text" id="current-type" name="type_polarity" value="<%= data.type_polarity%>"/></td>
+            <td>  <input type="text" id="voltage" name="voltage" value="<%= data.voltage %>"/></td>
+            <td><input type="text" id="current" name="current" value="<%= data.current %>"/></td>
+            <td> <input type="text" id="travel-speed" name="travel_speed" value="<%= data.travel_speed %>"/></td>
+            <td> <input type="text" id="interpass-temperature" name="interpass_temperature" value="<%= data.interpass_temperature%>"/></td>
+            <td><input type="text" id="pre-heat" name="pre_heat"  value="<%= data.pre_heat %>"/></td>
+            <td> <input type="text" id="post-weld-heat-treatment" name="post_weld" value="<%= data.post_weld %>"/></td>       
+             </tr>
+             <%   }) %>
+            </tbody>
+
+            <input id="send-data" type="submit"  style="text-decoration: none; background-color: green; color: white;"/>
+         
+          </form>
           </table>
-          <div
-            class="signatures"
-            style="
-              border: 2px black solid;
-              padding: 40px 10px;
-              display: flex;
-              gap: 210px;
-              font-size: 14px;
-            "
-          >
-        </div>
       </div>      
       </div>
     </div>
-  
-    <form style="padding: 20px 10px 0 10px" id="data-form" action="/report/update" method="post">
-        <label for="serial-no">Doc id.:</label>
-        <input type="text" id="doc_id" name="doc_id" value="<%= record?.doc_id %>" /><br />
-  
-        <label for="serial-no">Serial No.:</label>
-        <input type="text" id="serial_no" name="serial_no" value="<%= record?.serial_no %>" /><br />
-  
-        <label for="welder-id">Welder ID:</label>
-        <input type="text" id="welder_id" name="welder_id" value= "<%= record?.welder_id %>"  /><br />
-  
-        <label for="iqama-number">Iqama Number:</label>
-        <input type="text" id="iqama_no" name="iqama_no" value="<%= record?.iqama_no %>" /> <br />
-  
-        <label for="test-coupon-id">Test Coupon ID:</label>
-        <input type="text" id="test_coupon_id" name="test_coupon_id" value="<%= record?.test_coupon_id %>" /><br />
-  
-        <label for="date-of-inspection">Date of Inspection:</label>
-        <input
-          type="text"
-          id="date_of_inspection"
-          name="date_of_inspection"
-           value="<%= record?.date_of_inspection %>"
-        /><br />
-  
-        <label for="welding-process">Welding Process(es):</label>
-        <input type="text" id="welding_process" name="welding_process" value="<%= record?.welding_process %>" /><br />
-  
-        <label for="type-of-welding">Type of welding (manual/semi-auto):</label>
-        <input type="text" id="type_of_welding" name="type_of_welding" value="<%= record?.type_of_welding %>" /><br />
-  
-        <label for="backing">Backing (with/without):</label>
-        <input type="text" id="backing" name="backing" value="<%= record?.backing %>" /><br />
-  
-        <label for="type-of-weld-joint">Type of Weld/Joint:</label>
-        <input
-          type="text"
-          id="type_of_welding"
-          name="type-of-weld-joint"
-          value="<%= record?.type_of_welding %>"
-        /><br />
-        <label for="thickness">Thickness:</label>
-        <input type="text" id="thickness" name="thickness" value="<%= record?.thickness %>" /><br />
-  
-        <label for="product-type">Product Type (Plate or Pipe):</label>
-        <input type="text" id="product_type" name="product_type" value="<%= record?.product_type %>" /><br />
-  
-        <label for="diameter-of-pipe">Diameter of Pipe:</label>
-        <input type="text" id="diameter_of_pipe" name="diameter_of_pipe" value="<%= record?.diameter_of_pipe %>" /><br />
-  
-        <label for="base-metal-p-number">Base Metal P Number:</label>
-        <input
-          type="text"
-          id="base_metal_p_no"
-          name="base_metal_p_no"
-          value="<%= record?.base_metal_p_no %>"
-        /><br />
-        <label for="filler-metal-spec">Filler Metal or electrode specification(s) (SFA):</label>
-     
-        <input
-          type="text"
-          id="sfa"
-          name="sfa"
-          value="<%= record?.sfa %>"
-        /><br />
-  
-        <label for="filler-metal-f-number">Filler Metal F-Number (S):</label>
-        <input
-          type="text"
-          id="s"
-          name="s"
-          value="<%= record?.s %>"
-        /><br />
-        <label for="filler-metal-addition">Filler Metal addition/Deletion (GTAW/PAW):</label>
-        <input
-          type="text"
-          id="gtaw_paw"
-          name="gtaw_paw"
-          value="<%= record?.gtaw_paw %>"
-        /><br />
-        <label for="deposit_thickness">Deposit thickness for each process:</label>
-        <input
-          type="text"
-          id="deposit_thickness"
-          name="deposit_thickness"
-          value="<%= record?.deposit_thickness %>"
-        /><br />
-  
-        <label for="welding_position">Welding Position(s):</label>
-        <input type="text" id="welding_position" name="welding_position" value="<%= record?.welding_position %>" /><br />
-  
-        <label for="vertical-progression">Vertical Progression(s):</label>
-        <input
-  
-          value="<%= record?.vertical_progression %>"
-        /><br />
-  
-        <label for="ofw">Type of Fuel Gas (OFW):</label>
-        <input type="text" id="ofw" name="ofw" value="<%= record?.ofw %>"/><br />
-  
-        <label for="inert-gas-backing"
-          >Inert gas backing (GTAW, PAW, GMAW):</label
-        >
-        <input
-          type="text"
-          id="inert_gas"
-          name="inert_gas"
-          value="<%= record?.inert_gas %>"
-        /><br />
-  
-        <label for="transfer-mode"
-      @@ -204,7 +207,7 @@
-        <label for="current-type"
-          >Current Type I Polarity (AC. DCEP, DCEN):</label
-        >
-        <input type="text" id="current_type" name="current_type" value="<%= record?.current_type %>" /><br />
-  
-        <label for="voltage">Voltage:</label>
-        <input type="text" id="voltage" name="voltage" value="<%= record?.voltage %>"/><br />
-    
-        <label for="travel-speed">Travel Speed:</label>
-        <input type="text" id="current" name="current" value="<%= record?.current %>" /><br />
-  
-        <label for="travel-speed">Travel Speed:</label>
-        <input type="text" id="vertical_progression" name="vertical_progression" value="<%= record?.vertical_progression %>" /><br />
-  
-        <label for="interpass-temperature">InterPass Temperature:</label>
-        <input
-          type="text"
-          id="interpass_temperature"
-          name="interpass_temperature"
-          value="<%= record?.interpass_temperature %>"
-        /><br />
-  
-        <label for="pre-heat">Pre Heat (If Applicable):</label>
-        <input type="text" id="pre_heat" name="pre_heat" value="<%= record?.pre_heat %>" /><br />
-  
-        <label for="post-weld-heat-treatment"
-          >Post Weld Heat Treatment (If Applicable):</label
-        >
-        <input
-          type="text"
-          id="heat_treatment"
-          name="heat_treatment"
-          value="<%= record?.heat_treatment %>"
-        /><br />
-  
-        <button type="submit">Add Row</button>
-      </form>
-    <button style="grid-column:2/2"> Save</button>
-    <script>
-      // document.addEventListener("DOMContentLoaded", function () {
-      //     const form = document.getElementById("data-form");
-      //     const tableBody = document.querySelector("table tbody");
-      //     form.addEventListener("submit", async function (event) {
-            
 
-      //         const newRowData = {};
-      //         // Loop through the form elements and create table cells
-      //         for (let i = 0; i < form.elements.length; i++) {
-      //             const input = form.elements[i];
-      //             if (input.type !== "submit") {
-      //                 const cell = document.createElement("td");
-      //                 cell.textContent = input.value;
-      //                 newRowData[input.name] = input.value; // Store data in an object
-      //                 tableBody.appendChild(cell);
-      //             }
-      //         }
-               
-      //         // Send POST request to a frontend route (replace with your route)
-           
-
-      //         // Reset the form
-      //         form.reset();
-      //     });
-      // });
-  </script>
+   
+  
   </body>
 </html>
