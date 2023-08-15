@@ -42,7 +42,7 @@
     </thead>
 
   </table>
-  <table id="tab" style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
+  <table  style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tbody>
       <thead>
         <tr>
@@ -90,7 +90,7 @@
       </tr>
     </thead>
     </tbody>
-    <tbody style="text-align: center">
+    <tbody id="tab" style="text-align: center">
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder Process(es)</td>
         <td style="text-align: left; border: 1px solid black;"><input value="<%=record.welderProcessActual %>" type="text" name="welderProcessActual" id=""></td>
@@ -196,6 +196,7 @@
         <td style="text-align: left; border: 1px solid black;" colspan="2"><input value="<%=record.currentTypePolarityRange %>" type="text" name="currentTypePolarityRange" id=""></td>
       </tr>
     </tbody>
+    <table border>
     <thead>
       <tr>
         <th style=" font-weight: bold;">Test Conducted/ Type of Test</th>
@@ -212,8 +213,6 @@
             <h4>NOT - Radiography</h4>
             <h4>Mechanical Test</h4>
           </div>
-       
-          
         </td>
         <td style="text-align: center;">
           <div style="display: flex; gap: 10px; justify-content: center;">
@@ -266,7 +265,7 @@
     </tbody>
     <thead>
       <tr>
-        <th colspan="4">    <p style="font-size: 11px;">We, the undersigned, certify that the statements in the record are correct and that the test coupons were welded and tested in accordance with the requirements of <span style="color: rgb(0, 131, 254); font-weight: bold;">ASME SEC-EE 2021 Edition</span>.</p></th>
+        <th colspan="4">    <p style="font-size: 11px;">We, the undersigned, certify that the statements in the record are correct and that the test coupons were welded and tested in accordance with the requirements of <span style="color: rgb(0, 131, 254); font-weight: bold;">ASME SEC-EE <input type="text" name="year" id="" value="<% =record.year %>"> Edition</span>.</p></th>
       </tr>
     </thead>
    
@@ -319,7 +318,7 @@
 UPLOAD THE IQAMA IN JPG
 <input type="file" id="iqama" name="iqama"  />
 
-UPLOAD THE FILE IN JPG
+UPLOAD THE PROFILE PIC IN JPG
 <input type="file" id="profile" name = "profile" /> 
 <input value="Update" class="hide-in-print" type="submit"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">
 </form>
@@ -345,6 +344,7 @@ UPLOAD THE FILE IN JPG
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
           <input  type="text" value="<%=record.attr2key%>" name="attr2key"> 
         </td>
+        <td style="text-align: left; border: 1px solid black;"> <input  value="<%=record.attr2value %>" type="text" name="attr2value" id=""></td>
         <td style="text-align: left; border: 1px solid black;"> <input  value="<%=record.attr2value %>" type="text" name="attr2value" id=""></td>
       </tr>
 
