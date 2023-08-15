@@ -71,7 +71,7 @@ router.post("/edit/:certificateNo",async(req,res)=>{
     const record = await Certificate.findOne({"certificateNo": req.params.certificateNo}).exec();
     
     if (record){
-        res.render("editCertificate",{record});
+        res.render("EditCertificate",{record});
         console.log(record.certificateNo);
     }
     else{
