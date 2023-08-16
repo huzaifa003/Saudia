@@ -18,6 +18,7 @@ router.post("/insert", async (req, res) => {
     const projDet = data[data.length - 1]['project_details'];
     const client = data[data.length - 1]['client'];
     const contract = data[data.length - 1]['contract_details'];
+    const status = data[data.length-1]['status']
 
     let unique = false;
     let randomNo;
@@ -32,14 +33,14 @@ router.post("/insert", async (req, res) => {
         unique = true;
       }
     }
-
     const repData = await Report.insertMany({
       doc_details: data,
       doc_id: String(randomNo),
       prep_by: prep,
       project_details: projDet,
       client: client,
-      contract_details:contract
+      contract_details:contract,
+      status:status
     });
     if(req.session.user==='inspector'){
       res.send('/inspector'); // Sending the generated random number as response
