@@ -65,6 +65,13 @@
                                         <form action="/report/view/<%= report.doc_id %>" method="POST">
                                         <input type="submit" value="View"></input>
                                         </form>
+                                        <!-- <form action="/report/delete/<%= report.doc_id %>" method="POST">
+                                        <input type="submit" value="Delete"></input>
+                                        </form> -->
+                                       
+                                        <a style="text-decoration: none;
+                                        color: black;
+                                        border: 1px solid gray;" href="/report/delete/<%= report.doc_id %>""> Delete </a>
                                     </td>
 
                                 </tr>
@@ -100,8 +107,34 @@
         });
     });
 
+
+
+    
+
     </script>
-      
+    <script>
+        const deleteForm = document.getElementById('deleteForm');
+        deleteForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+    
+          try {
+            const response = await fetch(deleteForm.action, {
+              method: 'DELETE'
+            });
+    
+            if (response.ok) {
+              alert('Record deleted successfully');
+              // Optionally, you can redirect the user to another page here
+            } else {
+              const error = await response.json();
+              alert(`Error: ${error.error}`);
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while deleting the record.');
+          }
+        });
+      </script>  
     
 </body>
 </html>
