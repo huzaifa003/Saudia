@@ -10,17 +10,17 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <img style="width: 150px;" src="../images/smallLogo.png" alt="">
+                <img style="width: 200px;" src="../images/smallLogo.png" alt="">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <form action="/certificate/" method="GET"><button class="btn btn-outline-success me-2" type="submit">Certificate</button></form>
+                            <form action="/certificate/" method="GET"><button class="btn btn-outline-success me-2" type="submit"> Add Qualification Certificate</button></form>
                         </li>
                         <li class="nav-item">
-                            <form action="/card/" method="GET"> <button class="btn btn-outline-success me-2" type="submit">Welders</button></form>
+                            <form action="/card/" method="GET"> <button class="btn btn-outline-success me-2" type="submit">Add Qualification Welder Card</button></form>
                         </li>
                         <li class="nav-item">
                             <form action="/"><button class="btn btn-outline-danger me-2" type="submit">Logout</button></form>
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-left mb-4">Certificate Details</h2>
+                <h2 class="text-left mb-4">Welder Qualification Certificate Database </h2>
                 <input type="text" class="form-control mb-2" id="certificateSearch" placeholder="Search...">
                 <div class="table-responsive">
                   
@@ -67,6 +67,9 @@
                                             <form action="/certificate/view/<%= certificate.certificateNo %>">
                                             <input type="submit" value="View"></input>
                                             </form>
+                                            <form action="/certificate/delete/<%= certificate.certificateNo %>">
+                                            <input type="submit" value="Delete"></input>
+                                            </form>
                                         </td>
 
                                     </tr>
@@ -85,17 +88,19 @@
         <!-- Inspector Report Details Table -->
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-left mb-4">Inspector Report Details</h2>
+                <h2 class="text-left mb-4">Welder Qualification Testing Record Sheet</h2>
                 <!-- Add search bar -->
                 <input type="text" class="form-control mb-2" id="reportSearch" placeholder="Search...">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="reportTable">
                         <thead class="table-dark">
                             <tr>
-                                <th>Serial No</th>
+                                <th> Serial No</th>
                                 <th>Date</th>
-                                <th>Wielder ID</th>
-                               
+                                <th>Document ID</th>
+                                <th>Project Details</th>
+                                <th>Client</th>
+                                <th>Result Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -105,17 +110,20 @@
                                     <td><%= index + 1 %></td>
                                     <td><%= report.createdAt %></td>
                                     <td><%= report.doc_id %></td>
-                                   
+                                    <td><%= report.project_details %></td>
+                                    <td><%= report.client %></td>
+                                    <td><%= report.status %></td>
                                     <td style="display: flex; align-items: stretch;">
                                         <form action="/report/edit/<%= report.doc_id %>" method="POST">
                                         <input id="" type="submit" value="Edit"></input> 
                                         </form>
-
                                         <form action="/report/view/<%= report.doc_id %>" method="POST">
                                         <input type="submit" value="View"></input>
                                         </form>
+                                        <a style="text-decoration: none;
+                                        color: black;
+                                        border: 1px solid gray;" href="/report/delete/<%= report.doc_id %>""> Delete </a>
                                     </td>
-
                                 </tr>
                             <% }) %>
                         </tbody>
@@ -131,7 +139,7 @@
         <!-- Welder Details Table -->
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-left mb-4">Welder Details</h2>
+                <h2 class="text-left mb-4">Welder Qualification Card Database</h2>
                 <input type="text" class="form-control mb-2" id="welderSearch" placeholder="Search...">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="welderTable">
@@ -158,6 +166,9 @@
 
                                         <form action="/card/view/<%= card.card_no %>">
                                         <input type="submit" value="View"></input>
+                                        </form>
+                                        <form action="/card/delete/<%= card.card_no %>">
+                                        <input type="submit" value="Delete"></input>
                                         </form>
                                     </td>
 

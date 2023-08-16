@@ -81,6 +81,27 @@ router.get("/edit/:card_no", async (req, res) => {
         res.status(404).json({ "Status": "FAILED" });
     }
 })
+router.get("/delete/:card_no", async (req, res) => {
+    try {
+      const card_no = req.params.card_no;
+      // Find the document to delete
+      const deletedRecord = await Card.findOneAndDelete({ card_no: card_no });
+  
+      if (deletedRecord) {
+        if(fs.existsSync(`./uploads/${card_no}`)){
+            fs.rmdirSync(`./uploads/${card_no}`, { recursive: true, force: true });
+        }
+          res.redirect('/supervisor')
+        // res.status(200).json({ message: "Record deleted successfully" });
+      } else {
+        res.status(404).json({ error: "Record not found" });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
 
 router.post("/update/:card_no", async (req, res) => {
     let card_no = req.params.card_no;

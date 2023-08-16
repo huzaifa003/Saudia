@@ -31,13 +31,13 @@ router.post("/insert", async (req,res)=>{
         console.log(err);
     })
 
-    const iqama = req.files.iqama;
+    // const iqama = req.files.iqama;
     const profile = req.files.profile;
 
     
-    await iqama.mv("./uploads/certificates/" + body['certificateNo'] + "/iqama.jpg", (err)=>{
-        console.log(err);
-    })
+    // await iqama.mv("./uploads/certificates/" + body['certificateNo'] + "/iqama.jpg", (err)=>{
+    //     console.log(err);
+    // })
 
     await profile.mv("./uploads/certificates/" + body['certificateNo'] + "/profile.jpg", (err)=>{
         console.log(err);
@@ -79,6 +79,28 @@ router.post("/edit/:certificateNo",async(req,res)=>{
     }
 })
 
+router.get("/delete/:doc_id", async (req, res) => {
+    try {
+      const doc_id = req.params.doc_id;
+      // Find the document to delete
+      const deletedRecord = await Certificate.findOneAndDelete({ certificateNo: doc_id });
+  
+      if (deletedRecord) {
+        if(fs.existsSync(`./uploads/certificates/${doc_id}`)){
+            fs.rmdirSync(`./uploads/certificates/${doc_id}`, { recursive: true, force: true });
+        }
+          res.redirect('/supervisor')
+        // res.status(200).json({ message: "Record deleted successfully" });
+      } else {
+        res.status(404).json({ error: "Record not found" });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+
 router.post("/update/:certificateNo", async(req,res)=>{
     try{
     let body = req.body;
@@ -91,10 +113,10 @@ router.post("/update/:certificateNo", async(req,res)=>{
             await profile.mv("./uploads/certificates/" + certificateNo + "/profile.jpg")
         }
 
-        if (req.files.iqama !== undefined && req.files.iqama !== null){
-            const iqama = req.files.iqama;
-            await iqama.mv("./uploads/certificates/" + certificateNo + "/iqama.jpg")
-        }
+        // if (req.files.iqama !== undefined && req.files.iqama !== null){
+        //     const iqama = req.files.iqama;
+        //     await iqama.mv("./uploads/certificates/" + certificateNo + "/iqama.jpg")
+        // }
 
     }
 

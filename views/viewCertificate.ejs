@@ -36,8 +36,8 @@ h6{font-size: 11px;}
              <%= record.clientName %></h3>
         </div>
       </th>
-      <th><img style="width:100px" src="/certificates/<%= record.certificateNo %>/profile.jpg" alt=""></th>
-      <th><img style="width:150px" src="/certificates/<%= record.certificateNo %>/iqama.jpg" alt=""></th>
+      <th><img style="width:150px" src="/certificates/<%= record.certificateNo %>/profile.jpg" alt=""></th>
+    
     </thead>
 
   </table>
@@ -307,7 +307,7 @@ h6{font-size: 11px;}
             </td>
         </tr>
         <td colspan="4">
-          <img style="width: 100%; height: 30px;" src="/images/addresspic.png" alt="">
+          <img style="width: 100%; height: 80px;" src="/images/addresspic.png" alt="">
           <!-- <p style="text-align: center;">Address : شارع الزین العابدین, Ar Rabiyah, Dammam 32437,Saudi Arabia  | Email :<span style="color: blue;"> Inspection@atecosaudia.com</span></p>  <a class="hide-in-print" href="#" onclick="window.print(); return false;" style="text-decoration: none; background-color: red; color: white; padding: 2px;">Download PDF</a></td> -->
     </tbody>
 </table>
@@ -327,19 +327,14 @@ h6{font-size: 11px;}
 
     let table = document.getElementById("tab");
     table.innerHTML += ` <tr>
-        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
-          <input disabled type="text" value="<%=record.attr1key%>" name="attr1key"> 
-        </td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr1value %>" type="text" name="attr1value" id=""></td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr1range %>"  placeholder="Enter The Ranged" type="text" name="attr2range" id=""></td>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;"><%=record.attr1key%></td>
+        <td style="text-align: left; border: 1px solid black;"> <%=record.attr1value %></td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.attr1range %></td>
       </tr>
-
       <tr>
-        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
-          <input disabled type="text" value="<%=record.attr2key%>" name="attr1key"> 
-        </td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr2value %>" type="text" name="attr1value" id=""></td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr2range %>"  placeholder="Enter The Ranged" type="text" name="attr2range" id=""></td>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;"><%=record.attr2key%></td>
+        <td style="text-align: left; border: 1px solid black;"> <%=record.attr2value %></td>
+        <td style="text-align: left; border: 1px solid black;"> <%=record.attr2range %></td>
       </tr>
 
       <tr>`
