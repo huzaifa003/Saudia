@@ -14,6 +14,11 @@ router.get("/", async (req, res) => {
 router.post("/insert", async (req, res) => {
   try {
     const data = req.body;
+    const prep = data[data.length - 1]['prep_by'];
+    const projDet = data[data.length - 1]['project_details'];
+    const client = data[data.length - 1]['client'];
+    const contract = data[data.length - 1]['contract_details'];
+
     let unique = false;
     let randomNo;
 
@@ -27,16 +32,25 @@ router.post("/insert", async (req, res) => {
         unique = true;
       }
     }
+
     const repData = await Report.insertMany({
       doc_details: data,
       doc_id: String(randomNo),
+      prep_by: prep,
+      project_details: projDet,
+      client: client,
+      contract_details:contract
     });
-    // res.json({ success: true, message: 'Data saved successfully' });
-    res.send(no);
+    if(req.session.user==='inspector'){
+      res.send('/inspector'); // Sending the generated random number as response
+    }else{
+      res.send('/supervisor')
+    }
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 });
+
 
 // router.post('/addRows/:id',async(req,res)=>{
 //     const body = req.body;
@@ -83,19 +97,22 @@ router.post("/update/:doc_id", async (req, res) => {
       const body = req.body;
 
       const requestBody = body
-      
-      
-      
-      const existingRecord = await Report.findOne({ doc_id: doc_id });
+      let existingRecord = await Report.findOne({ doc_id: doc_id });
       if (existingRecord) {
        
         const convertedData = {
             "doc_id": doc_id,
-            "doc_details": []
+            "doc_details": [],
+            prep_by:body.prep_by,
+            project_details:body.project_details,
+            contract_details:body.contract_details,
+            client:body.client,
+            status:body.status
           };
           for (let i = 0; i < requestBody.welder_id.length; i++) {
             const docDetail = {
               "welder_id": requestBody.welder_id[i],
+              "welder_name": requestBody.welder_name[i],
               "iqama_no": requestBody.iqama_no[i],
               "test_coupon_id": requestBody.test_coupon_id[i],
               "date_of_inspection": requestBody.date_of_inspection[i],
@@ -126,7 +143,8 @@ router.post("/update/:doc_id", async (req, res) => {
             };
             convertedData.doc_details.push(docDetail);
         }
-       existingRecord.doc_details = convertedData.doc_details;
+        existingRecord.set(convertedData);
+  
         await existingRecord.save();
         // res.status(200).json(existingRecord);
         if (req.session.user==='inspector') {
@@ -145,7 +163,32 @@ router.post("/update/:doc_id", async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   });
+
   
+
+  router.get("/delete/:doc_id", async (req, res) => {
+    try {
+      const doc_id = req.params.doc_id;
+      // Find the document to delete
+      const deletedRecord = await Report.findOneAndDelete({ doc_id: doc_id });
+  
+      if (deletedRecord) {
+        if(req.session.user==='inspector'){
+          res.redirect('/inspector')
+          return
+        }else{
+          res.redirect('/supervisor')
+          return
+        }
+        res.status(200).json({ message: "Record deleted successfully" });
+      } else {
+        res.status(404).json({ error: "Record not found" });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
 
 router.post("/view/:doc_id", async (req, res) => {
   let doc_id = req.params.doc_id;
@@ -153,7 +196,7 @@ router.post("/view/:doc_id", async (req, res) => {
   const record = await Report.findOne({ doc_id: doc_id });
   console.log(record);
   if (record) {
-    res.status(200).render("ViewReport", { record: record, doc_id: doc_id , 'session':req.session.user});
+    res.status(200).render("ViewReport", { record: record, doc_id: doc_id , 'session':req.session.user });
     return;
   }
   res.status(404).json({ error: "Not found" });

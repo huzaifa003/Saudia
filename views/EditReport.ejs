@@ -80,6 +80,7 @@ button {
             <thead>
               <tr>
                 <th>Welder ID</th>
+                <th>Welder Name</th>
                 <th>Iqama Number</th>
                 <th>Test Coupon ID</th>
                 <th>Date of Inspection</th>
@@ -115,6 +116,7 @@ button {
               <tr>
                 
             <td> <input type="text" id="welder-id" name="welder_id" value="<%= data.welder_id %>" /></td>
+            <td> <input type="text" id="welder-id" name="welder_name" value="<%= data.welder_name %>" /></td>
             <td><input type="text" id="iqama-number" name="iqama_no" value="<%= data.iqama_no %>"/> </td> 
             <td><input type="text" id="test-coupon-id" name="test_coupon_id" value="<%= data.test_coupon_id %>" /></td> 
             <td> <input type="text" id="date-of-inspection" name="date_of_inspection" value="<%= data.date_of_inspection %>"/></td>
@@ -144,8 +146,57 @@ button {
             <td> <input type="text" id="post-weld-heat-treatment" name="post_weld" value="<%= data.post_weld %>"/></td>       
              </tr>
              <%   }) %>
+            
+            <tr>
+              <td>
+             
+                <div>
+                  <label for="">Prepared By :</label>
+                  <input type="text" name="prep_by" id="prep_by" value="<%= record.prep_by %>">
+                </div>
+               
+                </td>
+                <td>
+                  <div>
+                    <label for="">Project Details :</label>
+                    <input type="text" name="project_details" id="project_details" value="<%= record.project_details%>">
+                  </div>
+                </td>
+                
+               <td>
+                <div>
+                  <label for="">Contract Details :</label>
+                  <input type="text" name="contract_details" id="contract_details" value="<%= record.contract_details %>">
+                </div>
+
+               </td>
+               <td>
+                <div>
+                  <label for="">Client :</label>
+                  <input type="text" name="client" id="client" value="<%= record.client %>">
+                </div>
+               </td>
+                <td>
+                <div>
+                  <label for="">Approval :</label>
+                  <select name="status" id="status">
+                    <% if(record.status ==="accepted"){%>
+                    <option selected value="accepted">Accepted</option>
+                    <option value="rejected">Rejected</option>
+                    <% } else{%>
+                      <option  value="accepted">Accepted</option>
+                      <option selected value="rejected">Rejected</option>
+                    <%}%>
+                  </select>
+                </div>
+              
+            </td>
+            </tr>
+             
             </tbody>
 
+
+            
             <input id="send-data" type="submit"  style="text-decoration: none; background-color: green; color: white;"/>
          
           </form>
