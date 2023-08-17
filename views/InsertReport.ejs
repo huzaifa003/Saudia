@@ -67,19 +67,20 @@ button {
   <body>
     <div style="width: fit-content">
       <div style="border: 2px black solid; margin: 2px">
-        <div style="border: 2px black solid;display: flex; justify-content: space-evenly; align-items: center;" >
-          <div class="logo"> <img class = "logo" src="/images/AtecoLogoTransparent.png"> </div>
+        <div style="border: 2px black solid;display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse;" >
+          <img style="width: 200px; height: 150px;" class = "logo" src="/images/logo.png"> 
           <p style="text-align: center">
             Welder Qualification Test Record Sheet 
           </p>
-        <p>ATECO-WTQ_DOC# __</p>
+        <p>ATECO-WQT-DOC#001 REV 00</p>
         
         </div>
-        <div>
+        <div style="display: flex; flex-direction: column-reverse;">
           <table>
             <thead>
               <tr>
                 <th>Welder ID</th>
+                <th>Welder Name</th>
                 <th>Iqama Number</th>
                 <th>Test Coupon ID</th>
                 <th>Date of Inspection</th>
@@ -107,6 +108,7 @@ button {
                 <th>InterPass Temperature</th>
                 <th>Pre Heat (If Applicable)</th>
                 <th>Post Weld Heat Treatment (If Applicable)</th>
+                <th>Result Status</th>
              
               </tr>
             </thead>
@@ -114,6 +116,7 @@ button {
             
               <tr>
             <td> <input type="text" id="welder-id" name="welder_id" /></td>
+            <td> <input type="text" id="welder-name" name="welder_name" /></td>
             <td><input type="text" id="iqama-number" name="iqama_no" /> </td> 
             <td><input type="text" id="test-coupon-id" name="test_coupon_id" /></td> 
             <td> <input type="text" id="date-of-inspection" name="date_of_inspection"/></td>
@@ -140,19 +143,49 @@ button {
             <td> <input type="text" id="travel-speed" name="travel_speed" /></td>
             <td> <input type="text" id="interpass-temperature" name="interpass_temperature"/></td>
             <td><input type="text" id="pre-heat" name="pre_heat" /></td>
-            <td> <input type="text" id="post-weld-heat-treatment" name="post_weld"/></td>       
+            <td> <input type="text" id="post-weld-heat-treatment" name="post_weld"/></td>      
+            <td> <input type="text" id="status" name="status"/></td> 
              </tr>
+             
             </tbody>
-            <button id="send-data"  style="text-decoration: none; background-color: green; color: white;">Save</button>
+         
             <!-- <button id="send-data" value="Save" style="text-decoration: none; background-color: green; color: white;" /> -->
+            <a class="add-row" style=" width:2%; text-decoration: none; text-align: center; padding: 5px; background-color: green; color: white;" href="#">ADD ROW</a>
          
           </table>
+       
       </div>      
       </div>
     </div>
-
-    <a class="add-row" style="text-decoration: none; background-color: green; color: white;" href="#">ADD ROW</a>
+    <br>
+    <div>
+      <div>
+        <label for="">Prepared By :</label>
+        <input type="text" name="prep_by" id="prep_by">
+      </div>
+      <div>
+        <label for="">Project Details :</label>
+        <input type="text" name="project_details" id="project_details">
+      </div>
+      <div>
+        <label for="">Contract Details :</label>
+        <input type="text" name="contract_details" id="contract_details">
+      </div>
+      <div>
+        <label for="">Client :</label>
+        <input type="text" name="client" id="client">
+      </div>
+      <!-- <div>
+        <label for="">Approval :</label>
+        <select name="status" id="status">
+          <option value="accepted">Accepted</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div> -->
+    </div>
   
+    <button id="send-data"  style=" width: 10%; text-decoration: none; background-color: green; color: white; border-radius: 0%; margin: 10px 10px; ">SAVE</button>
+   
 
 
 
@@ -166,6 +199,7 @@ button {
           // ...
           newRow.innerHTML = `
           <td> <input type="text" id="welder-id" name="welder_id" /></td>
+          <td> <input type="text" id="welder-id" name="welder_name" /></td>
             <td><input type="text" id="iqama-number" name="iqama_no" /> </td> 
             <td><input type="text" id="test-coupon-id" name="test_coupon_id" /></td> 
             <td> <input type="text" id="date-of-inspection" name="date_of_inspection"/></td>
@@ -193,6 +227,7 @@ button {
             <td> <input type="text" id="interpass-temperature" name="interpass_temperature"/></td>
             <td><input type="text" id="pre-heat" name="pre_heat" /></td>
             <td> <input type="text" id="post-weld-heat-treatment" name="post_weld"/></td>
+            <td> <input type="text" id="status" name="status"/></td>  
            
           `;
           tableBody.appendChild(newRow);
@@ -220,22 +255,24 @@ button {
 
 
 
-
-
-
-
       function sendData() {
         const tableRows = document.querySelectorAll('#data-table-body tr');
         const data = [];
+        const prep_by = document.getElementById('prep_by').value;
+        const project_details = document.getElementById('project_details').value;
+        const client = document.getElementById('client').value;
+        // const status = document.getElementById('status').value;
+        const contract = document.getElementById('contract_details').value;
 
         tableRows.forEach(row => {
             const rowData = {};
             row.querySelectorAll('input').forEach(input => {
                 rowData[input.name] = input.value;
+                
             });
             data.push(rowData);
         });
-
+        data.push({prep_by:prep_by,project_details:project_details,client:client,contract_details:contract})
         const sendDataButton = document.getElementById('send-data');
         sendDataButton.innerText = 'Saving...';
 
@@ -246,7 +283,7 @@ button {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
+        .then(async(response)   => { window.location= await response.text()})
         .then(result => {
             console.log(result); // Handle the server response as needed
             sendDataButton.innerText = 'Data Sent';

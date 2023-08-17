@@ -72,7 +72,7 @@ button {
           <p style="text-align: center">
             Welder Qualification Test Record Sheet 
           </p>
-        <p>ATECO-WTQ_DOC# __</p>
+        <p>ATECO-WQT-FRS-DOC#001 REV 00</p>
         
         </div>
         <div>
@@ -80,6 +80,7 @@ button {
             <thead>
               <tr>
                 <th>Welder ID</th>
+                <th>Welder Name</th>
                 <th>Iqama Number</th>
                 <th>Test Coupon ID</th>
                 <th>Date of Inspection</th>
@@ -107,14 +108,17 @@ button {
                 <th>InterPass Temperature</th>
                 <th>Pre Heat (If Applicable)</th>
                 <th>Post Weld Heat Treatment (If Applicable)</th>
+                <th>Result Status</th>
               </tr>
             </thead>
             <form action="/report/update/<%= record.doc_id %>" method="post">
             <tbody id="data-table-body">
-              <% record.doc_details.map((data,index)=>{ %>
+              <% for (let index = 0; index < record.doc_details.length - 1; index++) {%>
+                <% const data = record.doc_details[index]; %>
               <tr>
                 
             <td> <input type="text" id="welder-id" name="welder_id" value="<%= data.welder_id %>" /></td>
+            <td> <input type="text" id="welder-id" name="welder_name" value="<%= data.welder_name %>" /></td>
             <td><input type="text" id="iqama-number" name="iqama_no" value="<%= data.iqama_no %>"/> </td> 
             <td><input type="text" id="test-coupon-id" name="test_coupon_id" value="<%= data.test_coupon_id %>" /></td> 
             <td> <input type="text" id="date-of-inspection" name="date_of_inspection" value="<%= data.date_of_inspection %>"/></td>
@@ -142,10 +146,70 @@ button {
             <td> <input type="text" id="interpass-temperature" name="interpass_temperature" value="<%= data.interpass_temperature%>"/></td>
             <td><input type="text" id="pre-heat" name="pre_heat"  value="<%= data.pre_heat %>"/></td>
             <td> <input type="text" id="post-weld-heat-treatment" name="post_weld" value="<%= data.post_weld %>"/></td>       
+            <td> <div>
+              <select name="status" id="status">
+                <% if(record.status ==="accepted"){%>
+                <option selected value="accepted">Accepted</option>
+                <option value="rejected">Rejected</option>
+                <% } else{%>
+                  <option  value="accepted">Accepted</option>
+                  <option selected value="rejected">Rejected</option>
+                <%}%>
+              </select>
+            </div></td>       
              </tr>
-             <%   }) %>
+             <%   } %>
+            
+            <tr>
+              <td>
+             
+                <div>
+                  <label for="">Prepared By :</label>
+                  <input type="text" name="prep_by" id="prep_by" value="<%= record.prep_by %>">
+                </div>
+               
+                </td>
+                <td>
+                  <div>
+                    <label for="">Project Details :</label>
+                    <input type="text" name="project_details" id="project_details" value="<%= record.project_details%>">
+                  </div>
+                </td>
+                
+               <td>
+                <div>
+                  <label for="">Contract Details :</label>
+                  <input type="text" name="contract_details" id="contract_details" value="<%= record.contract_details %>">
+                </div>
+
+               </td>
+               <td>
+                <div>
+                  <label for="">Client :</label>
+                  <input type="text" name="client" id="client" value="<%= record.client %>">
+                </div>
+               </td>
+                <td>
+                <!-- <div>
+                  <label for="">Approval :</label>
+                  <select name="status" id="status">
+                    <% if(record.status ==="accepted"){%>
+                    <option selected value="accepted">Accepted</option>
+                    <option value="rejected">Rejected</option>
+                    <% } else{%>
+                      <option  value="accepted">Accepted</option>
+                      <option selected value="rejected">Rejected</option>
+                    <%}%>
+                  </select>
+                </div> -->
+              
+            </td>
+            </tr>
+             
             </tbody>
 
+
+            
             <input id="send-data" type="submit"  style="text-decoration: none; background-color: green; color: white;"/>
          
           </form>
@@ -154,7 +218,16 @@ button {
       </div>
     </div>
 
-   
+    <div style="width: 356vw;">
+      <p style="border: 2px black solid; text-align: center; padding: 20px">
+        Address: 3658 Ar Rabiyah District Unit No:02, P.0 Box 32437 Dammam
+        6621 KSA ةيدوتسلا ‏المملكة العريية‎ ٦٦٢١ ‏الدمام‎ ٣٢٤٣٧ ‏ص.ب‎ ، ٠٢ ‏حي
+        الرابية الوحدة رقم‎ ،٣٦٥٨ ‏عنوان:‎
+        <br>Tel: +966-1383g3130 ٩٦٦١٣٨٣٢٨٢١٢٠ ‏جوال Website:
+        www.atecosaudia.com <br>Email: info@atecosaudia.com:‏البريد
+        الإلكتروني: Cr# 2051226809 ٢٠٥١٢٢٦٨٠٩ ‏س_ص:‎
+      </p>
+    </div>
   
   </body>
 </html>

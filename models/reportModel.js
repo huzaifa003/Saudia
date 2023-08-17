@@ -7,7 +7,13 @@ const reportModel = mongoose.Schema({
         get: function(date) {
             return date.toLocaleDateString('en-US');
         }
+
     },
+    client:String,
+    project_details:String,
+    prep_by : String,
+    contract_details:String,
+    
     serial_no:Number,
     doc_id: String,
     doc_details: [{
@@ -44,7 +50,8 @@ const reportModel = mongoose.Schema({
         witness_inspector: String,
         qc_supervisor: String,
         project_details: String,
-        welder_name: String
+        welder_name: String,
+        status : String
     }]
 });
 

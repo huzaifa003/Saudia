@@ -21,7 +21,6 @@
       }
     }
 </style>
-
 <body>
     <form action="/certificate/insert" method="post" enctype="multipart/form-data">
   <table style="margin: auto; width: 100%;">
@@ -42,8 +41,8 @@
     </thead>
 
   </table>
-  <table id="tab" style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
-    <tbody>
+  <table  style="margin: auto; width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tbody >
       <thead>
         <tr>
           <th></th>
@@ -89,8 +88,8 @@
         <th style="border: 1px solid black; font-weight: bold;" colspan="2">Range Qualified</th>
       </tr>
     </thead>
-    </tbody>
-    <tbody style="text-align: center">
+    </tbody >
+    <tbody  style="text-align: center">
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">Welder Process(es)</td>
         <td style="text-align: left; border: 1px solid black;"><input type="text" name="welderProcessActual" id=""></td>
@@ -196,16 +195,26 @@
         <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="currentTypePolarityRange" id=""></td>
       </tr>
 
+    
+
       <tr>
-        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
-          Add More Attributes
-        </td>
-        <td style="text-align: left; border: 1px solid black;"><input type="button" value="Add New Attribute" name="" id="btn" onclick="change(this.id)"></td>
-        
+        <table id="tab" style="width: 100%;">
+          <tbody>
+            <tr>
+              <td style="text-align: left; border: 1px solid black;font-weight: bold;">
+                Add More Attributes
+              </td>
+              <td style="text-align: left; border: 1px solid black;"><input type="button" value="Add New Attribute" name="" id="btn" onclick="change()"></td>
+              
+            </tr>
+          </tbody>
+        </table>
       </tr>
+
+
+
       <tr>
 <table style="width: 100%;" border="">
-
 
     </tbody>
     <thead>
@@ -220,12 +229,10 @@
 
         <td>
           <div style="display: flex; flex-direction: column; gap: 5px; justify-content: center;">
-            <h4>  Virtual Inspector</h4>
+            <h4>Virtual Inspector</h4>
             <h4>NOT - Radiography</h4>
             <h4>Mechanical Test</h4>
           </div>
-       
-          
         </td>
         <td style="text-align: center;">
           <div style="display: flex; gap: 10px; justify-content: center;">
@@ -267,7 +274,8 @@
 
     <thead>
       <tr>
-        <th colspan="4">    <p style="font-size: 11px;">We, the undersigned, certify that the statements in the record are correct and that the test coupons were welded and tested in accordance with the requirements of <span style="color: rgb(0, 131, 254); font-weight: bold;">ASME SEC-EE <input type="text" name="year" id=""> Edition</span>.</p></th>
+        <th colspan="4">    
+          <p style="font-size: 11px;">We, the undersigned, certify that the statements in the record are correct and that the test coupons were welded and tested in accordance with the requirements of <span style="color: rgb(0, 131, 254); font-weight: bold;"> <input type="text" name="year" id=""> </span>.</p></th>
       </tr>
     </thead>
    
@@ -317,8 +325,7 @@
     </tbody>
 </table>
 
-UPLOAD THE IQAMA IN JPG
-<input type="file" id="iqama" name="iqama" value="Upload Iqama in JPG"/>
+
 
 UPLOAD THE FILE IN JPG
 <input type="file" id="profile" name = "profile" value="Upload Profile in JPG"/> 
@@ -328,7 +335,8 @@ UPLOAD THE FILE IN JPG
 
 <script>
   let count = 0;
-  function change(params) {
+  function change(e) {
+
     count++;
     if (count > 2){
       return;
@@ -342,9 +350,11 @@ UPLOAD THE FILE IN JPG
         <td style="text-align: left; border: 1px solid black;"> <input placeholder="Enter The Value" type="text" name="attr${count}value" id=""></td>
   
         <td style="text-align: left; border: 1px solid black;"> <input placeholder="Enter The Ranged" type="text" name="attr${count}range" id=""></td>
-      </tr>
-      <tr>`
+      
+      </tr>`
+      
   }
+
 </script>
 
 </html>

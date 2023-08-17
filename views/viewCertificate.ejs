@@ -36,8 +36,8 @@ h6{font-size: 11px;}
              <%= record.clientName %></h3>
         </div>
       </th>
-      <th><img style="width:100px" src="/certificates/<%= record.certificateNo %>/profile.jpg" alt=""></th>
-      <th><img style="width:150px" src="/certificates/<%= record.certificateNo %>/iqama.jpg" alt=""></th>
+      <th><img style="width:150px" src="/certificates/<%= record.certificateNo %>/profile.jpg" alt=""></th>
+    
     </thead>
 
   </table>
@@ -77,7 +77,7 @@ h6{font-size: 11px;}
       <tr>
         <td style="border: 1px solid black;font-weight: bold;">Date of Test</td>
         <td style="border: 1px solid black;"><%=record.date_of_test %></td>
-        <td style="border: 1px solid black;font-weight: bold;">Wield Type</td>
+        <td style="border: 1px solid black;font-weight: bold;">Weld Type</td>
         <td style="border: 1px solid black;"><%=record.weldType %></td>
       </tr>
     </tbody>
@@ -103,12 +103,12 @@ h6{font-size: 11px;}
         <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typesOfWeldersRange %></td>
       </tr>
       <tr>
-        <td style="text-align: left; border: 1px solid black;font-weight: bold;">Bracking (With/without)</td>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;">Backing (With/without)</td>
         <td style="text-align: left; border: 1px solid black;"><%=record.brackingActual %></td>
         <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.brackingRange %></td>
       </tr>
       <tr>
-        <td style="text-align: left; border: 1px solid black;font-weight: bold;">Types of wield</td>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;">Types of weld</td>
         <td style="text-align: left; border: 1px solid black;"><%=record.typesOfWieldActual %></td>
         <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.typesOfWieldRange %></td>
       </tr>
@@ -182,7 +182,7 @@ h6{font-size: 11px;}
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
-          Transfer Mode( spary,globulat or pulse to sort circuit-GMAW)
+          Transfer Mode( spary,globular mode or pulse to sort circuit-GMAW)
         </td>
         <td style="text-align: left; border: 1px solid black;"><%=record.transferModelActual %></td>
         <td style="text-align: left; border: 1px solid black;" colspan="2"><%=record.transferModelRange %></td>
@@ -209,8 +209,8 @@ h6{font-size: 11px;}
 
         <td>
           <div style="display: flex; flex-direction: column; gap: 5px; justify-content: center;">
-            <h4>  Virtual Inspector</h4>
-            <h4>NOT - Radiography</h4>
+            <h4>  Visual Inspector</h4>
+            <h4>NDT - Radiography</h4>
             <h4>Mechanical Test</h4>
           </div>
        
@@ -262,7 +262,7 @@ h6{font-size: 11px;}
     </tbody>
     <thead>
       <tr>
-        <th colspan="4">    <p style="font-size: 11px;">We, the undersigned, certify that the statements in the record are correct and that the test coupons were welded and tested in accordance with the requirements of <span style="color: rgb(0, 131, 254); font-weight: bold;">ASME SEC-EE <%= record.year %> Edition</span>.</p></th>
+        <th colspan="4">    <p style="font-size: 11px;">We, the undersigned, certify that the statements in the record are correct and that the test coupons were welded and tested in accordance with the requirements of <span style="color: rgb(0, 131, 254); font-weight: bold;"><%= record.year %></span>.</p></th>
       </tr>
     </thead>
    
@@ -307,7 +307,14 @@ h6{font-size: 11px;}
             </td>
         </tr>
         <td colspan="4">
-          <img style="width: 100%; height: 30px;" src="/images/addresspic.png" alt="">
+          <p style="border: 2px black solid; text-align: center; padding: 20px">
+            Address: 3658 Ar Rabiyah District Unit No:02, P.0 Box 32437 Dammam
+            6621 KSA ةيدوتسلا ‏المملكة العريية‎ ٦٦٢١ ‏الدمام‎ ٣٢٤٣٧ ‏ص.ب‎ ، ٠٢ ‏حي
+            الرابية الوحدة رقم‎ ،٣٦٥٨ ‏عنوان:‎
+            <br>Tel: +966-1383g3130 ٩٦٦١٣٨٣٢٨٢١٢٠ ‏جوال Website:
+            www.atecosaudia.com <br>Email: info@atecosaudia.com:‏البريد
+            الإلكتروني: Cr# 2051226809 ٢٠٥١٢٢٦٨٠٩ ‏س_ص:‎
+          </p>
           <!-- <p style="text-align: center;">Address : شارع الزین العابدین, Ar Rabiyah, Dammam 32437,Saudi Arabia  | Email :<span style="color: blue;"> Inspection@atecosaudia.com</span></p>  <a class="hide-in-print" href="#" onclick="window.print(); return false;" style="text-decoration: none; background-color: red; color: white; padding: 2px;">Download PDF</a></td> -->
     </tbody>
 </table>
@@ -327,19 +334,14 @@ h6{font-size: 11px;}
 
     let table = document.getElementById("tab");
     table.innerHTML += ` <tr>
-        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
-          <input disabled type="text" value="<%=record.attr1key%>" name="attr1key"> 
-        </td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr1value %>" type="text" name="attr1value" id=""></td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr1range %>"  placeholder="Enter The Ranged" type="text" name="attr2range" id=""></td>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;"><%=record.attr1key%></td>
+        <td style="text-align: left; border: 1px solid black;"> <%=record.attr1value %></td>
+        <td style="text-align: left; border: 1px solid black;"><%=record.attr1range %></td>
       </tr>
-
       <tr>
-        <td style="text-align: left; border: 1px solid black;font-weight: bold;">
-          <input disabled type="text" value="<%=record.attr2key%>" name="attr1key"> 
-        </td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr2value %>" type="text" name="attr1value" id=""></td>
-        <td style="text-align: left; border: 1px solid black;"> <input disabled value="<%=record.attr2range %>"  placeholder="Enter The Ranged" type="text" name="attr2range" id=""></td>
+        <td style="text-align: left; border: 1px solid black;font-weight: bold;"><%=record.attr2key%></td>
+        <td style="text-align: left; border: 1px solid black;"> <%=record.attr2value %></td>
+        <td style="text-align: left; border: 1px solid black;"> <%=record.attr2range %></td>
       </tr>
 
       <tr>`
