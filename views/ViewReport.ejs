@@ -77,7 +77,7 @@ button {
           <p style="text-align: center">
             Welder Qualification Test Record Sheet 
           </p>
-        <p>ATECO-WTQ_DOC# <%=doc_id %> REV 00</p>
+        <p>ATECO-WQT-FRS-DOC# 001 REV 00</p>
         
         </div>
         <div>
@@ -113,13 +113,14 @@ button {
                 <th>InterPass Temperature</th>
                 <th>Pre Heat (If Applicable)</th>
                 <th>Post Weld Heat Treatment (If Applicable)</th>
+                <th>Result Status</th>
               </tr>
             </thead>
            
             <tbody id="data-table-body">
-              <% record.doc_details.map((data,index)=>{ %>
-              <tr>  
-                
+              <% for (let index = 0; index < record.doc_details.length - 1; index++) {%>
+                <% const data = record.doc_details[index]; %>
+                <tr>  
             <td>  <%= data.welder_id %></td>
             <td>  <%= data.welder_name %></td>
             <td><%= data.iqama_no %></td> 
@@ -148,9 +149,21 @@ button {
             <td>  <%= data.travel_speed %></td>
             <td>  <%= data.interpass_temperature%></td>
             <td> <%= data.pre_heat %></td>
-            <td>  <%= data.post_weld %></td>       
+            <td>  <%= data.post_weld %></td>   
+            <td>
+              <div>  
+                  <% if (data.status ==='accepted'){%>
+                 <span style="background-color: #14ab55; color: white;">Accepted</span>
+                  <% }else{%>
+                    
+                    <span style="background-color: red; color: white;">Rejected</span>
+                    
+                    <% }%>
+               
+              </div>
+            </td>    
              </tr>
-             <%   }) %>
+             <%   } %>
             </tbody>
          
           </table>
@@ -181,7 +194,7 @@ button {
         <label for="">Client :</label>
         <span><%= record.client %></span>
       </div>
-      <div>
+      <!-- <div>
         <label for="">Approval :</label>
        
           <% if (record.status ==='accepted'){%>
@@ -192,7 +205,7 @@ button {
             
             <% }%>
        
-      </div>
+      </div> -->
     </div>
     <div style="width: 153vw;">
       <p style="border: 2px black solid; text-align: center; padding: 20px">

@@ -13,7 +13,7 @@ const reportModel = mongoose.Schema({
     project_details:String,
     prep_by : String,
     contract_details:String,
-    status : String,
+    
     serial_no:Number,
     doc_id: String,
     doc_details: [{
@@ -50,7 +50,8 @@ const reportModel = mongoose.Schema({
         witness_inspector: String,
         qc_supervisor: String,
         project_details: String,
-        welder_name: String
+        welder_name: String,
+        status : String
     }]
 });
 

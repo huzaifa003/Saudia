@@ -72,7 +72,7 @@ button {
           <p style="text-align: center">
             Welder Qualification Test Record Sheet 
           </p>
-        <p>ATECO-WTQ_DOC#____ REV 00</p>
+        <p>ATECO-WQT-DOC#001 REV 00</p>
         
         </div>
         <div style="display: flex; flex-direction: column-reverse;">
@@ -108,6 +108,7 @@ button {
                 <th>InterPass Temperature</th>
                 <th>Pre Heat (If Applicable)</th>
                 <th>Post Weld Heat Treatment (If Applicable)</th>
+                <th>Result Status</th>
              
               </tr>
             </thead>
@@ -142,7 +143,8 @@ button {
             <td> <input type="text" id="travel-speed" name="travel_speed" /></td>
             <td> <input type="text" id="interpass-temperature" name="interpass_temperature"/></td>
             <td><input type="text" id="pre-heat" name="pre_heat" /></td>
-            <td> <input type="text" id="post-weld-heat-treatment" name="post_weld"/></td>       
+            <td> <input type="text" id="post-weld-heat-treatment" name="post_weld"/></td>      
+            <td> <input type="text" id="status" name="status"/></td> 
              </tr>
              
             </tbody>
@@ -173,13 +175,13 @@ button {
         <label for="">Client :</label>
         <input type="text" name="client" id="client">
       </div>
-      <div>
+      <!-- <div>
         <label for="">Approval :</label>
         <select name="status" id="status">
           <option value="accepted">Accepted</option>
           <option value="rejected">Rejected</option>
         </select>
-      </div>
+      </div> -->
     </div>
   
     <button id="send-data"  style=" width: 10%; text-decoration: none; background-color: green; color: white; border-radius: 0%; margin: 10px 10px; ">SAVE</button>
@@ -225,6 +227,7 @@ button {
             <td> <input type="text" id="interpass-temperature" name="interpass_temperature"/></td>
             <td><input type="text" id="pre-heat" name="pre_heat" /></td>
             <td> <input type="text" id="post-weld-heat-treatment" name="post_weld"/></td>
+            <td> <input type="text" id="status" name="status"/></td>  
            
           `;
           tableBody.appendChild(newRow);
@@ -258,17 +261,18 @@ button {
         const prep_by = document.getElementById('prep_by').value;
         const project_details = document.getElementById('project_details').value;
         const client = document.getElementById('client').value;
-        const status = document.getElementById('status').value;
+        // const status = document.getElementById('status').value;
         const contract = document.getElementById('contract_details').value;
 
         tableRows.forEach(row => {
             const rowData = {};
             row.querySelectorAll('input').forEach(input => {
                 rowData[input.name] = input.value;
+                
             });
             data.push(rowData);
         });
-        data.push({prep_by:prep_by,project_details:project_details,client:client,status:status,contract_details:contract})
+        data.push({prep_by:prep_by,project_details:project_details,client:client,contract_details:contract})
         const sendDataButton = document.getElementById('send-data');
         sendDataButton.innerText = 'Saving...';
 

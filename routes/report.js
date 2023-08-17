@@ -11,6 +11,7 @@ const generateRandomNumber = () => {
 router.get("/", async (req, res) => {
   res.render("InsertReport");
 });
+
 router.post("/insert", async (req, res) => {
   try {
     const data = req.body;
@@ -18,7 +19,7 @@ router.post("/insert", async (req, res) => {
     const projDet = data[data.length - 1]['project_details'];
     const client = data[data.length - 1]['client'];
     const contract = data[data.length - 1]['contract_details'];
-    const status = data[data.length-1]['status']
+    // const status = data[data.length-1]['status']
 
     let unique = false;
     let randomNo;
@@ -40,7 +41,7 @@ router.post("/insert", async (req, res) => {
       project_details: projDet,
       client: client,
       contract_details:contract,
-      status:status
+      // status:status
     });
     if(req.session.user==='inspector'){
       res.send('/inspector'); // Sending the generated random number as response
@@ -51,6 +52,10 @@ router.post("/insert", async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 });
+
+// router.post('/insert',async(req,res)=>{
+//   console.log(req.body);
+// })
 
 
 // router.post('/addRows/:id',async(req,res)=>{
@@ -108,7 +113,7 @@ router.post("/update/:doc_id", async (req, res) => {
             project_details:body.project_details,
             contract_details:body.contract_details,
             client:body.client,
-            status:body.status
+            
           };
           for (let i = 0; i < requestBody.welder_id.length; i++) {
             const docDetail = {
@@ -140,7 +145,8 @@ router.post("/update/:doc_id", async (req, res) => {
               "travel_speed": requestBody.travel_speed[i],
               "interpass_temperature": requestBody.interpass_temperature[i],
               "pre_heat": requestBody.pre_heat[i],
-              "post_weld": requestBody.post_weld[i]
+              "post_weld": requestBody.post_weld[i],
+              "status": requestBody.status[i] 
             };
             convertedData.doc_details.push(docDetail);
         }

@@ -48,6 +48,8 @@
                                 <th>Document ID</th>
                                 <th>Project Details</th>
                                 <th>Client</th>
+                                <th>Welder ID</th>
+                                <th>Welder Name</th>
                                 <th>Result Status</th>
                                 <th>Action</th>
                             </tr>
@@ -60,7 +62,9 @@
                                     <td><%= report.doc_id %></td>
                                     <td><%= report.project_details %></td>
                                     <td><%= report.client %></td>
-                                    <td><%= report.status %></td>
+                                   <td><%= report.doc_details[index]['welder_id']%></td>
+                                   <td><%= report.doc_details[index]['welder_name']%></td>
+                                   <td><%= report.doc_details[index]['status']%></td>
                                     <td style="display: flex; align-items: stretch;">
                                         <form action="/report/edit/<%= report.doc_id %>" method="POST">
                                         <input id="" type="submit" value="Edit"></input> 
