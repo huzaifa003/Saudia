@@ -27,7 +27,7 @@ router.post("/insert", async (req, res) => {
 
     let folder_name = "./uploads/" + body['card_no'];
     console.log(folder_name)
-    fs.mkdir(folder_name, (err) => {
+    fs.mkdirSync(folder_name, (err) => {
         if (err) {
             console.error('Error creating directory:', err);
         } else {
@@ -38,7 +38,7 @@ router.post("/insert", async (req, res) => {
     if (req.files !== null) {
         const file = req.files.card;
         let fname = body['card_no'] + ".jpg"
-        file.mv("./uploads/" + "/" + body['card_no'] + "/" + fname, (err) => {
+        await file.mv("./uploads/" + body['card_no'] + "/" + fname, (err) => {
             if (err) {
                 console.error('Error moving File:', err);
             } else {
@@ -48,7 +48,7 @@ router.post("/insert", async (req, res) => {
         })
     }
 
-    qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "http://atecosaudia-welderqualification-database.com/card/view/" + body['card_no']);
+    await qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "http://atecosaudia-welderqualification-database.com/card/view/" + body['card_no']);
     body['qr'] = body['card_no'] + ".png"
     const card = await Card.create(body);
     const record = card
@@ -120,7 +120,7 @@ router.post("/update/:card_no", async (req, res) => {
                 fs.rmdirSync(folder_name, { recursive: true, force: true });
             }
 
-            fs.mkdir(folder_name, (err) => {
+            fs.mkdirSync(folder_name, (err) => {
                 if (err) {
                     console.error('Error creating directory:', err);
                 } else {
@@ -129,7 +129,7 @@ router.post("/update/:card_no", async (req, res) => {
             });
 
             let fname = body['card_no'] + ".jpg"
-            file.mv("./uploads/" + "/" + body['card_no'] + "/" + fname, (err) => {
+            await file.mv("./uploads/" + "/" + body['card_no'] + "/" + fname, (err) => {
                 if (err) {
                     console.error('Error moving File:', err);
                 } else {
@@ -138,7 +138,7 @@ router.post("/update/:card_no", async (req, res) => {
             })
         }
 
-        qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "http://atecosaudia-welderqualification-database.com/" + body['card_no']);
+        await qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "http://atecosaudia-welderqualification-database.com/" + body['card_no']);
         body['qr'] = body['card_no'] + ".png"
         body['image'] = body['card_no'] + ".jpg"
 

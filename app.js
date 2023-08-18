@@ -75,6 +75,9 @@ mongoose.connect('mongodb+srv://arsalan:123@cluster0.1pceytg.mongodb.net/aetco?r
     console.log("Server Running at 4200");
   })
 })
+.catch(()=>{
+  console.error("Failed to connect");
+})
 
 
 

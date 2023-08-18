@@ -27,7 +27,7 @@ router.post("/insert", async (req,res)=>{
     body['count'] = no;
     body['certificateNo'] = "certificate_" + String(no);
     console.log(body['certificateNo']);
-    const folder = fs.mkdir("./uploads/certificates/" + body['certificateNo'], (err)=>{
+    fs.mkdirSync("./uploads/certificates/" + body['certificateNo'], (err)=>{
         console.log(err);
     })
 
