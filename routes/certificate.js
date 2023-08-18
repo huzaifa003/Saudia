@@ -15,7 +15,7 @@ router.post("/insert", async (req, res) => {
     try {
         const body = req.body;
         // body['serial_no'] = Report.find().count()+1;
-        // body['welder_id'] = 
+        
         const last_one = await Certificate.findOne().sort({ _id: -1 }).exec();
 
         let no = 1;
@@ -28,6 +28,7 @@ router.post("/insert", async (req, res) => {
         console.log(no);
         body['count'] = no;
         body['certificateNo'] = "certificate_" + String(no);
+        body['welderId'] = "w-" + no;
         console.log(body['certificateNo']);
         if (fs.existsSync("./uploads/certificates/" + body['certificateNo']) == false) {
             fs.mkdirSync("./uploads/certificates/" + body['certificateNo'], (err) => {
@@ -129,9 +130,10 @@ router.post("/update/:certificateNo", async (req, res) => {
 
         }
 
-        await qrcode.toFile("./uploads/certificates/" + certificateNo + "/qrcode.png", "http://atecosaudia-welderqualification-database.com/certificate/" + certificateNo);
+        await qrcode.toFile("./uploads/certificates/" + certificateNo + "/qrcode.png", "http://atecosaudia-welderqualification-database.com/certificate/view" + certificateNo);
 
         body['certificateNo'] = certificateNo;
+        
 
         const da = await Certificate.findOneAndDelete({ "certificateNo": certificateNo })
         if (da['count'] === null) {
@@ -139,6 +141,8 @@ router.post("/update/:certificateNo", async (req, res) => {
         }
         else
             body['count'] = da['count']
+
+        body['welderId'] = "w-" + certificateNo.split("_")[1];
         console.log(body['count']);
 
         const updated = await Certificate.create(req.body);
