@@ -29,7 +29,7 @@ router.post("/insert", async (req, res) => {
 
         let folder_name = "./uploads/" + body['card_no'];
         console.log(folder_name)
-        if (fs.existsSync(folder_name)) {
+        if (!fs.existsSync(folder_name)) {
             fs.mkdirSync(folder_name, (err) => {
                 if (err) {
                     console.error('Error creating directory:', err);
