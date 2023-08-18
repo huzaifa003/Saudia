@@ -37,7 +37,9 @@
         </div>
       </th>
       <!-- <th><img style="width:100px" src="/images/profilepic.jfif" alt=""></th> -->
-      <th><img style="width:150px" src="/images/iqama.jpg" alt=""></th>
+      <th style="max-width:150px;"> <h3 style=" font-size: medium; font-weight: bold; color: black; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">UPLOAD THE FILE IN JPG </h3> <br>
+        <input accept="image/jpg" onchange="previewImage(event)" type="file" id="profile" name = "profile" value="Upload Profile in JPG"/> </th>
+      <th><img id="preview-selected-image" style="width:150px" src="/images/iqama.jpg" alt=""></th>
     </thead>
 
   </table>
@@ -327,8 +329,7 @@
 
 
 
-UPLOAD THE FILE IN JPG
-<input type="file" id="profile" name = "profile" value="Upload Profile in JPG"/> 
+
 <input class="hide-in-print" type="submit"  style="text-decoration: none; background-color: green; color: white; padding: 2px;">
 </form>
 </body>
@@ -356,5 +357,43 @@ UPLOAD THE FILE IN JPG
   }
 
 </script>
+
+<script>
+  /**
+ * Create an arrow function that will be called when an image is selected.
+ */
+const previewImage = (event) => {
+    /**
+     * Get the selected files.
+     */
+    const imageFiles = event.target.files;
+    /**
+     * Count the number of files selected.
+     */
+    const imageFilesLength = imageFiles.length;
+    /**
+     * If at least one image is selected, then proceed to display the preview.
+     */
+    if (imageFilesLength > 0) {
+        /**
+         * Get the image path.
+         */
+        const imageSrc = URL.createObjectURL(imageFiles[0]);
+        /**
+         * Select the image preview element.
+         */
+        const imagePreviewElement = document.querySelector("#preview-selected-image");
+        /**
+         * Assign the path to the image preview element.
+         */
+        imagePreviewElement.src = imageSrc;
+        /**
+         * Show the element by changing the display value to "block".
+         */
+        imagePreviewElement.style.display = "block";
+    }
+};
+</script>
+
 
 </html>
