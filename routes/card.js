@@ -48,7 +48,7 @@ router.post("/insert", async (req, res) => {
         })
     }
 
-    qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "localhost:4200/card/view/" + body['card_no']);
+    qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "http://atecosaudia-welderqualification-database.com/card/view/" + body['card_no']);
     body['qr'] = body['card_no'] + ".png"
     const card = await Card.create(body);
     const record = card
@@ -138,7 +138,7 @@ router.post("/update/:card_no", async (req, res) => {
             })
         }
 
-        qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "localhost:4200/" + body['card_no']);
+        qrcode.toFile("./uploads/" + body['card_no'] + "/" + body['card_no'] + ".png", "http://atecosaudia-welderqualification-database.com/" + body['card_no']);
         body['qr'] = body['card_no'] + ".png"
         body['image'] = body['card_no'] + ".jpg"
 

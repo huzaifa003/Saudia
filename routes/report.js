@@ -35,7 +35,7 @@ router.post("/insert", async (req, res) => {
       }
     }
     const repData = await Report.insertMany({
-      doc_details: data,
+      doc_details: data.slice(0, -1),
       doc_id: String(randomNo),
       prep_by: prep,
       project_details: projDet,
@@ -53,37 +53,7 @@ router.post("/insert", async (req, res) => {
   }
 });
 
-// router.post('/insert',async(req,res)=>{
-//   console.log(req.body);
-// })
 
-
-// router.post('/addRows/:id',async(req,res)=>{
-//     const body = req.body;
-
-//     no = req.params.id
-//     body['serial_no'] = no;
-//     // body['welder_id'] = "w-" + String(no);
-//     body['doc_id'] = "r-" + String(no);
-//         try {
-//         const report = await Report.create(req.body);
-
-//         let record = await Report.find({ doc_id: { $all: body.doc_id } })
-//         if (!Array.isArray(record)){
-//             record = [record];
-//         }
-//         console.log(record);
-//         if (record){
-//             res.status(200).render("InsertAndViewReport",{"id" : no});
-//             return;
-//         }
-
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({"message" : error.message});
-//     }
-
-// })
 
 router.post("/edit/:doc_id", async (req, res) => {
   let doc_id = req.params.doc_id;
@@ -173,21 +143,25 @@ router.post("/update/:doc_id", async (req, res) => {
 
   
 
-  router.get("/delete/:doc_id", async (req, res) => {
+  router.get("/delete/:doc_id/:id", async (req, res) => {
     try {
       const doc_id = req.params.doc_id;
-      // Find the document to delete
-      const deletedRecord = await Report.findOneAndDelete({ doc_id: doc_id });
+      const id = req.params.id
+      // Find the document to delete the subdocument from
+      const filter = {
+        'doc_id':id,
+        'doc_details.welder_id': doc_id };
+      const update = { $pull: { doc_details: { welder_id: doc_id } } };
+      
+      // Perform the update operation
+      const updatedRecord = await Report.findOneAndUpdate(filter, update);
   
-      if (deletedRecord) {
-        if(req.session.user==='inspector'){
-          res.redirect('/inspector')
-          return
-        }else{
-          res.redirect('/supervisor')
-          return
+      if (updatedRecord) {
+        if (req.session.user === 'inspector') {
+          res.redirect('/inspector');
+        } else {
+          res.redirect('/supervisor');
         }
-        res.status(200).json({ message: "Record deleted successfully" });
       } else {
         res.status(404).json({ error: "Record not found" });
       }
@@ -196,7 +170,7 @@ router.post("/update/:doc_id", async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   });
-
+  
 router.post("/view/:doc_id", async (req, res) => {
   let doc_id = req.params.doc_id;
   console.log(doc_id);
