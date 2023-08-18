@@ -36,10 +36,19 @@
            <input type="text" name="clientName" id=""></h3>
         </div>
       </th>
+
+      
       <!-- <th><img style="width:100px" src="/images/profilepic.jfif" alt=""></th> -->
-      <th style="max-width:150px;"> <h3 style=" font-size: medium; font-weight: bold; color: black; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">UPLOAD THE FILE IN JPG </h3> <br>
-        <input accept="image/jpg" onchange="previewImage(event)" type="file" id="profile" name = "profile" value="Upload Profile in JPG"/> </th>
-      <th><img id="preview-selected-image" style="width:150px" src="/images/iqama.jpg" alt=""></th>
+      <th style="max-width:150px;">
+        <label style=" cursor: pointer; background-color: rgb(4, 111, 0); color: white; padding: 5px;" for="files"
+        class="btn">Select Image</label>
+      <input  id="files" style="visibility:hidden;" name="profile" type="file" accept="image/jpg" onchange="previewImage(event)">
+        
+        <!-- <h3 style=" font-size: medium; font-weight: bold; color: black; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">UPLOAD THE FILE IN JPG </h3> <br>
+        <input class="file-btn" accept="image/jpg" onchange="previewImage(event)" type="file" id="profile" name = "profile" value="Upload Profile in JPG"/> </th> -->
+
+      
+      <th ><img  id="preview-selected-image" style="width:150px" src="/images/white.jpg" alt=""></th>
     </thead>
 
   </table>
@@ -184,7 +193,7 @@
       </tr>
       <tr>
         <td style="text-align: left; border: 1px solid black;font-weight: bold;">
-          Transfer Mode( spary,globulat or pulse to sort circuit-GMAW)
+          Transfer Mode( spary, globular, SHORT)
         </td>
         <td style="text-align: left; border: 1px solid black;"><input type="text" name="transferModelActual" id=""></td>
         <td style="text-align: left; border: 1px solid black;" colspan="2"><input type="text" name="transferModelRange" id=""></td>
@@ -322,7 +331,18 @@
             </td>
         </tr>
         <td colspan="4">
-          <img style="width: 100%; height: 30px;" src="/images/addresspic.png" alt="">
+          <!-- <img style="width: 100%; height: 30px;" src="/images/addresspic.png" alt=""> -->
+
+          <h3 style="border: 2px black solid; text-align: center; padding: 20px">
+
+            Address: 3658 Ar Rabiyah District Unit No:02, P.0 Box 32437 Dammam
+            6621 KSA ةيدوتسلا ‏المملكة العريية‎ ٦٦٢١ ‏الدمام‎ ٣٢٤٣٧ ‏ص.ب‎ ، ٠٢ ‏حي
+            الرابية الوحدة رقم‎ ،٣٦٥٨ ‏عنوان:‎
+            <br>Tel: +966138383130 ٩٦٦١٣٨٣٢٨٢١٢٠ ‏جوال Website:
+            www.atecosaudia.com <br>Email: info@atecosaudia.com:‏البريد
+            الإلكتروني: Cr# 2051226809 ٢٠٥١٢٢٦٨٠٩ ‏س_ص:‎
+          </h3>
+
           <!-- <p style="text-align: center;">Address : شارع الزین العابدین, Ar Rabiyah, Dammam 32437,Saudi Arabia  | Email :<span style="color: blue;"> Inspection@atecosaudia.com</span></p>  <a class="hide-in-print" href="#" onclick="window.print(); return false;" style="text-decoration: none; background-color: red; color: white; padding: 2px;">Download PDF</a></td> -->
     </tbody>
 </table>
@@ -395,5 +415,17 @@ const previewImage = (event) => {
 };
 </script>
 
+
+<style>
+
+  
+.file-btn {
+    cursor: pointer;
+    background-color: rgb(4, 111, 0);
+    color: white;
+    padding: 5px;
+}
+
+</style>
 
 </html>
