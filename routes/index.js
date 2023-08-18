@@ -14,6 +14,7 @@ router.use(session({
 }));
 
 router.get('/', function (req, res, next) {
+  req.session.destroy();
   res.render("authentication")
 });
 router.get('/supervisor', async (req, res) => {
@@ -54,9 +55,9 @@ if (req.session.user==='inspector') {
 })
 
 router.post('/auth', async function (req, res) {
-  console.log(req.body.id);
+  console.log(req.body);
   if (req.body.user_role === 'supervisor') {
-    const user = User.findOne({ 'userId': req.body.id, 'password': req.body.password });
+    const user = await User.findOne({ 'userId': req.body.id, 'password': req.body.password }).exec();
     console.log(user);
     if (user) {
       console.log('User Found ');
@@ -69,7 +70,13 @@ router.post('/auth', async function (req, res) {
     }
   }
   if (req.body.user_role === 'inspector') {
-    const user = User.findOne({ 'userId': req.body.id, 'password': req.body.password });
+    console.log("HELLLLLLLLLLLLLLLLLO");
+    let user = false;
+    if (req.body.id == "user456" && req.body.password == "inspector1@3")
+    {
+      user =true;
+    }
+    // const user = await User.findOne({ 'userId': req.body.id, 'password': req.body.password }).exec();
     console.log(user);
     if (user) {
       console.log('User Found ');
