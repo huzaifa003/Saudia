@@ -118,7 +118,7 @@ button {
             </thead>
            
             <tbody id="data-table-body">
-              <% for (let index = 0; index < record.doc_details.length - 1; index++) {%>
+              <% for (let index = 0; index < record.doc_details.length ; index++) {%>
                 <% const data = record.doc_details[index]; %>
                 <tr>  
             <td>  <%= data.welder_id %></td>

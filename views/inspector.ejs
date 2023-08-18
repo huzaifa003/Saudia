@@ -52,33 +52,32 @@
                                 <th>Welder Name</th>
                                 <th>Result Status</th>
                                 <th>Action</th>
+                             
                             </tr>
                         </thead>
                         <tbody>
-                            <% reportData.forEach(function(report, index){ %>
-                                <tr>
-                                    <td><%= index + 1 %></td>
+                            <% reportData.forEach(function(report, index) { %>
+                                <% for (let i = 0; i < report.doc_details.length; i++) { %>
+                                    <tr>
+                                    <td><%= i + 1 %></td>
                                     <td><%= report.createdAt %></td>
                                     <td><%= report.doc_id %></td>
                                     <td><%= report.project_details %></td>
                                     <td><%= report.client %></td>
-                                   <td><%= report.doc_details[index]['welder_id']%></td>
-                                   <td><%= report.doc_details[index]['welder_name']%></td>
-                                   <td><%= report.doc_details[index]['status']%></td>
-                                    <td style="display: flex; align-items: stretch;">
-                                        <form action="/report/edit/<%= report.doc_id %>" method="POST">
-                                        <input id="" type="submit" value="Edit"></input> 
-                                        </form>
-                                        <form action="/report/view/<%= report.doc_id %>" method="POST">
-                                        <input type="submit" value="View"></input>
-                                        </form>
-                                        
-                                        <a style="text-decoration: none;
-                                        color: black;
-                                        border: 1px solid gray;" href="/report/delete/<%= report.doc_id %>""> Delete </a>
-                                    </td>
-
-                                </tr>
+                                        <td><%= report.doc_details[i]['welder_id'] %></td>
+                                        <td><%= report.doc_details[i]['welder_name'] %></td>
+                                        <td><%= report.doc_details[i]['status'] %></td>
+                                        <td style="display: flex; align-items: stretch;">
+                                            <form action="/report/edit/<%= report.doc_id %>" method="POST">
+                                                <input id="" type="submit" value="Edit" />
+                                            </form>
+                                            <form action="/report/view/<%= report.doc_id %>" method="POST">
+                                                <input type="submit" value="View" />
+                                            </form>
+                                            <a style="text-decoration: none; color: black; border: 1px solid gray;" href="/report/delete/<%= report.doc_details[i]['welder_id'] %>/<%= report.doc_id %>">Delete</a>
+                                        </td>
+                                    </tr>
+                                <% } %>
                             <% }) %>
                         </tbody>
                     </table>
