@@ -18,6 +18,8 @@ const cardSchema = mongoose.Schema({
     test_position: String,
     vertical_progression: String,
     test_dia: String,
+    thickness_qualified: String,
+    diameter_qualified: String,
     p_no_qualified: String,
     f_no_qualified: String,
     place_of_issue: String,
