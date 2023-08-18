@@ -31,58 +31,6 @@
         </nav>
     </div>
     <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-left mb-4">Welder Qualification Certificate Database </h2>
-                <input type="text" class="form-control mb-2" id="certificateSearch" placeholder="Search...">
-                <div class="table-responsive">
-                  
-                        <table class="table table-bordered table-striped" id="certificateTable">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th> Serial No</th>
-                                    <th>Issued In</th>
-                                    <th>Certificate No</th>
-                                    <th>Welder ID</th>
-                                    <th>Welder Name</th>
-                                    <th>Client Name</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% certificateData.forEach(function(certificate, index){ %>
-                                    <tr>
-                                        <td><%= index + 1 %></td>
-                                        <td><%= certificate.createdAt %></td>
-                                        <td><%= certificate.certificateNo %></td>
-                                        <td><%= certificate.welderId %></td>
-                                        <td><%= certificate.welderName %></td>
-                                        <td><%= certificate.clientName %></td>
-                                        <td style="display: flex; align-items: stretch;">
-                                            <form action="/certificate/edit/<%= certificate.certificateNo %>" method="POST">
-                                            <input id="" type="submit" value="Edit"></input> 
-                                            </form>
-
-                                            <form action="/certificate/view/<%= certificate.certificateNo %>">
-                                            <input type="submit" value="View"></input>
-                                            </form>
-                                            <form action="/certificate/delete/<%= certificate.certificateNo %>">
-                                            <input type="submit" value="Delete"></input>
-                                            </form>
-                                        </td>
-
-                                    </tr>
-                                <% }) %>
-                            </tbody>
-                        </table>
-                        
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
     <div class="container">
         <!-- Inspector Report Details Table -->
@@ -136,6 +84,63 @@
             </div>
         </div>
     </div>
+    
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-left mb-4">Welder Qualification Certificate Database </h2>
+                <input type="text" class="form-control mb-2" id="certificateSearch" placeholder="Search...">
+                <div class="table-responsive">
+                  
+                        <table class="table table-bordered table-striped" id="certificateTable">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th> Serial No</th>
+                                    <th>Issued In</th>
+                                    <th>Certificate No</th>
+                                    <th>Welder ID</th>
+                                    <th>Welder Name</th>
+                                    <th>Client Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% certificateData.forEach(function(certificate, index){ %>
+                                    <tr>
+                                        <td><%= index + 1 %></td>
+                                        <td><%= certificate.createdAt %></td>
+                                        <td><%= certificate.certificateNo %></td>
+                                        <td><%= certificate.welderId %></td>
+                                        <td><%= certificate.welderName %></td>
+                                        <td><%= certificate.clientName %></td>
+                                        <td style="display: flex; align-items: stretch;">
+                                            <form action="/certificate/edit/<%= certificate.certificateNo %>" method="POST">
+                                            <input id="" type="submit" value="Edit"></input> 
+                                            </form>
+
+                                            <form action="/certificate/view/<%= certificate.certificateNo %>">
+                                            <input type="submit" value="View"></input>
+                                            </form>
+                                            <form action="/certificate/delete/<%= certificate.certificateNo %>">
+                                            <input type="submit" value="Delete"></input>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<br>
+ 
 
 
     
