@@ -115,7 +115,7 @@ button {
             <tbody id="data-table-body">
             
               <tr>
-            <td> <input type="text" id="welder-id" name="welder_id" /></td>
+            <td> <input required type="text" id="welder-id" name="welder_id" /></td>
             <td> <input type="text" id="welder-name" name="welder_name" /></td>
             <td><input type="text" id="iqama-number" name="iqama_no" /> </td> 
             <td><input type="text" id="test-coupon-id" name="test_coupon_id" /></td> 
@@ -144,7 +144,7 @@ button {
             <td> <input type="text" id="interpass-temperature" name="interpass_temperature"/></td>
             <td><input type="text" id="pre-heat" name="pre_heat" /></td>
             <td> <input type="text" id="post-weld-heat-treatment" name="post_weld"/></td>      
-            <td> <input type="text" id="status" name="status"/></td> 
+            <td> <input required type="text" id="status" name="status"/></td> 
              </tr>
              
             </tbody>
@@ -267,6 +267,13 @@ button {
         tableRows.forEach(row => {
             const rowData = {};
             row.querySelectorAll('input').forEach(input => {
+              if (input.id === "welder-id"){
+                if (input.value === "" || input.value === null || input.value === undefined){
+                  sendDataButton.innerText = "Please Enter the welder_id"
+                  return;
+                }
+              }
+
                 rowData[input.name] = input.value;
                 
             });
