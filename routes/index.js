@@ -39,7 +39,7 @@ router.get('/supervisor', async (req, res) => {
   res.render('Supervisor', { "cardData": cardData, "reportData": reportData, "certificateData": certificateData })
    
 }else{
-  res.render('/')
+  res.redirect('/')
 }
 })
 
