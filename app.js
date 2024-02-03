@@ -68,7 +68,7 @@ app.use(function(req, res, next) {
 //   res.render('authentication')
 //  })
 
-mongoose.connect('mongodb+srv://arsalan:123@cluster0.1pceytg.mongodb.net/aetco?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://ateco:kPMFziDxynvEgAd7@cluster0.jyuqm8x.mongodb.net/ateco?retryWrites=true&w=majority')
 .then(()=>{
   console.log("connected to MongoDB");
   app.listen(4200,()=>{
